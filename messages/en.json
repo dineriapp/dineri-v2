@@ -1,0 +1,20 @@
+{
+  "lang": "en",
+  "hero": {
+    "eyebrow": "v3.0 · new dashboard · reservations + AI menu translation",
+    "headline": {
+      "lead": "The operating system",
+      "middle": "for your",
+      "tail": "restaurant",
+      "emphasis": "bio link."
+    },
+    "subhead": "Replace six tools with one. Menu, reservations, reviews, social, QR and analytics - under a single link your guests already follow.",
+    "ctaPrimary": "Start free - no card",
+    "ctaSecondary": "Watch 90s tour",
+    "badges": {
+      "setup": "4 minute setup",
+      "languages": "28 languages",
+      "freePlan": "Free forever plan"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+# Postinstall scripts are opt-in. pnpm 11 refuses to run `install` - and so
+# every `pnpm run <script>` - while any of these is undecided, so each one needs
+# an explicit boolean.
+#
+# All three ship prebuilt platform binaries via optional dependencies, so their
+# install scripts are unnecessary here. Verified: esbuild 0.18/0.25/0.28 all
+# transform correctly, drizzle-kit runs, and sharp loads with libvips 8.18.3.
+# Leaving them false keeps the install free of arbitrary script execution.
+allowBuilds:
+  '@parcel/watcher': true
+  '@swc/core': true
+  # Pulled in transitively by jspdf. Its postinstall only prints a funding
+  # banner, so skipping it changes nothing about the built output.
+  core-js: false
+  esbuild: false
+  sharp: false
+  unrs-resolver: false
+ignoredBuiltDependencies:
+  - sharp
+  - unrs-resolver
+minimumReleaseAgeExclude:
+  - '@better-auth/core@1.6.27'
+  - '@better-auth/drizzle-adapter@1.6.27'
+  - '@better-auth/kysely-adapter@1.6.27'
+  - '@better-auth/memory-adapter@1.6.27'
+  - '@better-auth/mongo-adapter@1.6.27'
+  - '@better-auth/prisma-adapter@1.6.27'
+  - '@better-auth/stripe@1.6.27'
+  - '@better-auth/telemetry@1.6.27'
+  - better-auth@1.6.27

@@ -1,0 +1,20 @@
+{
+  "lang": "fr",
+  "hero": {
+    "eyebrow": "v3.0 · nouveau tableau de bord · réservations + traduction de menu par IA",
+    "headline": {
+      "lead": "Le système d'exploitation",
+      "middle": "du lien bio",
+      "tail": "de votre",
+      "emphasis": "restaurant."
+    },
+    "subhead": "Remplacez six outils par un seul. Menu, réservations, avis, réseaux sociaux, QR et statistiques - sous un lien unique que vos clients suivent déjà.",
+    "ctaPrimary": "Commencer gratuitement - sans carte",
+    "ctaSecondary": "Voir la démo de 90 s",
+    "badges": {
+      "setup": "Configuration en 4 minutes",
+      "languages": "28 langues",
+      "freePlan": "Offre gratuite à vie"
+    }
+  }
+}

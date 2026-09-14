@@ -1,0 +1,20 @@
+{
+  "lang": "it",
+  "hero": {
+    "eyebrow": "v3.0 · nuova dashboard · prenotazioni + traduzione menu con IA",
+    "headline": {
+      "lead": "Il sistema operativo",
+      "middle": "del bio link",
+      "tail": "del tuo",
+      "emphasis": "ristorante."
+    },
+    "subhead": "Sostituisci sei strumenti con uno. Menu, prenotazioni, recensioni, social, QR e analisi - sotto un unico link che i tuoi ospiti già seguono.",
+    "ctaPrimary": "Inizia gratis - senza carta",
+    "ctaSecondary": "Guarda il tour di 90 s",
+    "badges": {
+      "setup": "Configurazione in 4 minuti",
+      "languages": "28 lingue",
+      "freePlan": "Piano gratuito per sempre"
+    }
+  }
+}

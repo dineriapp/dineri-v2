@@ -1,0 +1,20 @@
+{
+  "lang": "de",
+  "hero": {
+    "eyebrow": "v3.0 · neues Dashboard · Reservierungen + KI-Menüübersetzung",
+    "headline": {
+      "lead": "Das Betriebssystem",
+      "middle": "für den",
+      "tail": "Bio-Link Ihres",
+      "emphasis": "Restaurants."
+    },
+    "subhead": "Ersetzen Sie sechs Tools durch eines. Menü, Reservierungen, Bewertungen, Social Media, QR-Codes und Analysen - unter einem einzigen Link, dem Ihre Gäste bereits folgen.",
+    "ctaPrimary": "Kostenlos starten - ohne Karte",
+    "ctaSecondary": "90-Sekunden-Tour ansehen",
+    "badges": {
+      "setup": "In 4 Minuten eingerichtet",
+      "languages": "28 Sprachen",
+      "freePlan": "Für immer kostenlos"
+    }
+  }
+}

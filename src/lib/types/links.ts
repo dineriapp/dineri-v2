@@ -1,0 +1,16 @@
+export type IconKey =
+    | "website"
+    | "location"
+    | "menu"
+    | "event"
+    | "phone"
+    | "email"
+    | "shop"
+    | "instagram"
+    | "facebook"
+    | "twitter"
+    | "youtube"
+    | "tiktok"
+    | "whatsapp"
+    | "spotify"
+    | "link";

@@ -1,0 +1,20 @@
+{
+  "lang": "es",
+  "hero": {
+    "eyebrow": "v3.0 · nuevo panel · reservas + traducción de menús con IA",
+    "headline": {
+      "lead": "El sistema operativo",
+      "middle": "del enlace bio",
+      "tail": "de tu",
+      "emphasis": "restaurante."
+    },
+    "subhead": "Sustituye seis herramientas por una. Menú, reservas, reseñas, redes sociales, QR y analíticas - en un solo enlace que tus clientes ya siguen.",
+    "ctaPrimary": "Empieza gratis - sin tarjeta",
+    "ctaSecondary": "Ver tour de 90 s",
+    "badges": {
+      "setup": "Configuración en 4 minutos",
+      "languages": "28 idiomas",
+      "freePlan": "Plan gratis para siempre"
+    }
+  }
+}
