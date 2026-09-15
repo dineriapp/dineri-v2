@@ -2,6 +2,7 @@ import { db } from "@/drizzle/db";
 import { getOnlineReservationsStatus } from "@/lib/services/reservation-online-availability";
 import { absoluteUrl } from "@/lib/seo";
 import type { MetadataRoute } from "next";
+import { unstable_cache } from "next/cache";
 
 const MARKETING_PATHS: Array<{ path: string; priority: number; changeFrequency: "monthly" }> = [
   { path: "/", priority: 1, changeFrequency: "monthly" },
@@ -18,9 +19,27 @@ const MARKETING_PATHS: Array<{ path: string; priority: number; changeFrequency: 
   { path: "/cookies", priority: 0.3, changeFrequency: "monthly" },
 ];
 
-export const revalidate = 3600;
+export const dynamic = "force-dynamic";
 
 const MAX_VENUES = 15_000;
+
+const REVALIDATE_SECONDS = 3600;
+
+const listVenues = unstable_cache(
+  () =>
+    db.query.restaurant.findMany({
+      columns: {
+        slug: true,
+        updatedAt: true,
+        is_menu_published: true,
+        reservation_settings: true,
+      },
+      orderBy: (r, { desc }) => desc(r.updatedAt),
+      limit: MAX_VENUES,
+    }),
+  ["sitemap-venues"],
+  { revalidate: REVALIDATE_SECONDS },
+);
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const deployedAt = new Date();
@@ -34,16 +53,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }),
   );
 
-  const venues = await db.query.restaurant.findMany({
-    columns: {
-      slug: true,
-      updatedAt: true,
-      is_menu_published: true,
-      reservation_settings: true,
-    },
-    orderBy: (r, { desc }) => desc(r.updatedAt),
-    limit: MAX_VENUES,
-  });
+  const venues = await listVenues();
 
   const venuePages: MetadataRoute.Sitemap = venues.flatMap((venue) => {
     const entries: MetadataRoute.Sitemap = [
