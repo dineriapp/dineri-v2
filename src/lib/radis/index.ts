@@ -1,12 +1,16 @@
 import "server-only";
 import Redis from "ioredis";
+import { resolveRedisUrls } from "./urls";
 
-const globalForRedis = globalThis as unknown as { redis?: Redis };
+type RedisClients = {
+  analytics: Redis;
+  rateLimit: Redis;
+  separate: boolean;
+};
 
-function createRedisClient(): Redis {
-  const url = process.env.REDIS_URL;
-  if (!url) throw new Error("REDIS_URL is not set");
+const globalForRedis = globalThis as unknown as { redisClients?: RedisClients };
 
+function createRedisClient(url: string, role: string): Redis {
   const client = new Redis(url, {
     lazyConnect: true,
     maxRetriesPerRequest: 3,
@@ -14,12 +18,27 @@ function createRedisClient(): Redis {
   });
 
   client.on("error", (err) => {
-    console.error("Redis connection error:", err);
+    console.error(`Redis (${role}) connection error:`, err);
   });
 
   return client;
 }
 
-export const redis = globalForRedis.redis ?? createRedisClient();
+function createRedisClients(): RedisClients {
+  const urls = resolveRedisUrls();
+  const analytics = createRedisClient(urls.analytics, "analytics");
 
-if (process.env.NODE_ENV !== "production") globalForRedis.redis = redis;
+  const rateLimit = urls.separate ? createRedisClient(urls.rateLimit, "rate-limit") : analytics;
+
+  return { analytics, rateLimit, separate: urls.separate };
+}
+
+const clients = globalForRedis.redisClients ?? createRedisClients();
+
+if (process.env.NODE_ENV !== "production") globalForRedis.redisClients = clients;
+
+export const redis = clients.analytics;
+
+export const rateLimitRedis = clients.rateLimit;
+
+export const rateLimitRedisIsSeparate = clients.separate;

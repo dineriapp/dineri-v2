@@ -2,10 +2,14 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { describe, it } from "node:test";
 
-const ACTIONS_SOURCE = readFileSync(
-  "src/app/(dashboard)/dashboard/(with-sidebar)/settings/stripe/actions.ts",
-  "utf8",
-);
+const STRIPE_SETTINGS_DIR = "src/app/(dashboard)/dashboard/(with-sidebar)/settings/stripe";
+
+/** Follows the constant rather than assuming which file in that folder holds it. */
+const SETTINGS_SOURCE = ["schema.ts", "actions.ts"]
+  .map((f) => readFileSync(`${STRIPE_SETTINGS_DIR}/${f}`, "utf8"))
+  .join("\n");
+
+const ACTIONS_SOURCE = SETTINGS_SOURCE;
 
 const ROUTE_SOURCE = readFileSync("src/app/api/stripe/[restaurantId]/webhook/route.ts", "utf8");
 

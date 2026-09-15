@@ -3,7 +3,7 @@
 import { reservationReference } from "@/components/shared/reservation-ticket";
 import { ReservationStatus } from "@/drizzle/schemas/reservation-schema";
 import { ReservationWithArea } from "@/drizzle/types";
-import { refundableCents, refundStateOf } from "@/lib/reservations/refunds";
+import { canRefund, refundableCents, refundStateOf } from "@/lib/reservations/refunds";
 import { useUpdateReservationStatus } from "@/lib/tanstack-react-query/hooks/reservation-dashboard";
 import { cn } from "@/lib/utils";
 import { useSelectedRestaurant } from "@/stores/restaurant-store";
@@ -83,6 +83,8 @@ export function ReservationDetailDrawer({
 
   const isFree = reservation.paymentStatus === "free";
   const refundable = refundableCents(reservation.paidAmount, reservation.refundedAmount) / 100;
+  // Refunds are offered on cancelled bookings only.
+  const refundAllowed = canRefund(reservation);
   const refundState = refundStateOf(reservation.paidAmount, reservation.refundedAmount);
 
   const dirty = status !== reservation.status;
@@ -97,8 +99,14 @@ export function ReservationDetailDrawer({
     .join("");
 
   const save = () => {
+    // Cancelling is the moment a deposit becomes refundable, so offer it right
+    // away. Tested against the status the booking is about to have, and through
+    // the same rule the button uses, so the dialog can never open on something
+    // the refund action would then refuse.
     const cancellingWithMoney =
-      status === "cancelled" && reservation.status !== "cancelled" && refundable > 0;
+      status === "cancelled" &&
+      reservation.status !== "cancelled" &&
+      canRefund({ ...reservation, status: "cancelled" });
 
     updateMutation.mutate(
       { id: reservation.id, status, paymentStatus: reservation.paymentStatus },
@@ -330,7 +338,7 @@ export function ReservationDetailDrawer({
               </p>
             </div>
 
-            {refundable > 0 && (
+            {refundAllowed && (
               <button
                 onClick={() => setRefundOpen(true)}
                 className="inline-flex w-full items-center justify-center gap-1.5 rounded-xl border border-white/15 bg-surface-1 px-4 py-2.5 text-xs font-semibold transition hover:border-white/30"

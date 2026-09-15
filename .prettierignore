@@ -1,0 +1,12 @@
+node_modules
+.next
+src/drizzle/migrations
+out
+build
+dist
+coverage
+public
+*.lock
+package-lock.json
+yarn.lock
+pnpm-lock.yaml

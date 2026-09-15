@@ -12,7 +12,7 @@ import {
   useUnseatedDayReservations,
   useUpdateReservationStatus,
 } from "@/lib/tanstack-react-query/hooks/reservation-dashboard";
-import { refundableCents } from "@/lib/reservations/refunds";
+import { canRefund, refundableCents } from "@/lib/reservations/refunds";
 import { fmtMoney } from "@/lib/stripe/types";
 import { cn } from "@/lib/utils";
 import { useSelectedRestaurant } from "@/stores/restaurant-store";
@@ -584,7 +584,7 @@ export function TimelineView({ slotMinutes = 90 }: { slotMinutes?: number }) {
                       )}
                     </span>
                   </div>
-                  {refundableCents(selected.paidAmount, selected.refundedAmount) > 0 && (
+                  {canRefund(selected) && (
                     <button
                       onClick={() => setRefundTarget(selected)}
                       className="mt-1.5 inline-flex w-full items-center justify-center gap-1.5 rounded-lg border border-white/15 bg-background px-3 py-2 text-[11px] font-semibold transition hover:border-white/30"

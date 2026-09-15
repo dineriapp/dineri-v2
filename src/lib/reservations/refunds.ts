@@ -33,7 +33,32 @@ export const REFUND_ERRORS = {
   tooLarge: "That is more than the remaining refundable amount.",
   noPaymentIntent:
     "This booking has no Stripe payment on file, so it can't be refunded automatically.",
+  notCancelled: "Only cancelled reservations can be refunded. Cancel the booking first.",
 } as const;
+
+export const REFUNDABLE_STATUS = "cancelled";
+
+export const isRefundableStatus = (status: string | null | undefined): boolean =>
+  status === REFUNDABLE_STATUS;
+
+/**
+ * Whether the Refund control should be offered at all. Takes the booking rather
+ * than loose arguments so every call site applies the same three conditions -
+ * forgetting the `paymentReference` check would render a button that can only
+ * fail, there being no Stripe payment behind it to refund against.
+ */
+export function canRefund(booking: {
+  status?: string | null;
+  paymentReference?: string | null;
+  paidAmount?: string | number | null;
+  refundedAmount?: string | number | null;
+}): boolean {
+  return (
+    isRefundableStatus(booking.status) &&
+    !!booking.paymentReference &&
+    refundableCents(booking.paidAmount, booking.refundedAmount) > 0
+  );
+}
 
 export type RefundAmountCheck =
   { ok: true; cents: number; state: RefundState } | { ok: false; error: string };

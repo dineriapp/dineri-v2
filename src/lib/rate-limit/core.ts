@@ -2,7 +2,7 @@ import "server-only";
 
 import type { Redis } from "ioredis";
 
-import { redis } from "@/lib/radis";
+import { rateLimitRedis } from "@/lib/radis";
 import type { RateLimitPolicy } from "./policies";
 
 const HIT_SCRIPT = `
@@ -24,7 +24,7 @@ type RateLimitRedis = Redis & {
   dineriRateLimitHit(key: string, windowMs: number): Promise<[number, number]>;
 };
 
-const client = redis as RateLimitRedis;
+const client = rateLimitRedis as RateLimitRedis;
 
 if (typeof client.dineriRateLimitHit !== "function") {
   client.defineCommand("dineriRateLimitHit", { numberOfKeys: 1, lua: HIT_SCRIPT });

@@ -4,7 +4,7 @@ import { Calendar } from "@/components/ui/calendar";
 import Loader from "@/components/ui/loader";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { ReservationPaymentStatus } from "@/drizzle/schemas/reservation-schema";
-import { refundableCents } from "@/lib/reservations/refunds";
+import { canRefund } from "@/lib/reservations/refunds";
 import {
   useReservationPaymentsPage,
   useReservationPaymentsSummary,
@@ -338,7 +338,6 @@ export function PaymentsTab() {
                 cls: "bg-muted/40 text-muted-foreground border-white/10",
               };
               const rowMoney = (n: number) => fmtMoney(n, r.currency ?? currency);
-              const refundable = refundableCents(r.paidAmount, r.refundedAmount) / 100;
               const refunded = Number(r.refundedAmount);
               return (
                 <div
@@ -402,7 +401,7 @@ export function PaymentsTab() {
                         </div>
                       )}
                     </div>
-                    {refundable > 0 && r.paymentReference && (
+                    {canRefund(r) && (
                       <button
                         onClick={() => setRefundTarget(r)}
                         className="inline-flex h-8 shrink-0 items-center gap-1 rounded-lg border border-white/10 bg-background px-2 text-[11px] text-muted-foreground hover:border-white/20 hover:text-foreground"

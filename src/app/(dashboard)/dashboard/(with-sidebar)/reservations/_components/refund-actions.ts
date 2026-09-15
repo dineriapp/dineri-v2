@@ -8,6 +8,7 @@ import { sendReservationRefundEmail } from "@/lib/email/sender-functions/send-re
 import {
   centsToNumeric,
   checkRefundAmount,
+  isRefundableStatus,
   REFUND_ERRORS,
   refundableCents,
 } from "@/lib/reservations/refunds";
@@ -52,6 +53,7 @@ export async function refundReservationAction(
         date: true,
         time: true,
         currency: true,
+        status: true,
         paymentStatus: true,
         paymentReference: true,
         paymentIntentId: true,
@@ -62,6 +64,10 @@ export async function refundReservationAction(
 
     if (!existing) {
       return { success: false, error: "Reservation not found" };
+    }
+
+    if (!isRefundableStatus(existing.status)) {
+      return { success: false, error: REFUND_ERRORS.notCancelled };
     }
 
     const check = checkRefundAmount(input.amount, existing.paidAmount, existing.refundedAmount);
@@ -196,16 +202,22 @@ export async function getRefundableAmountAction(
         eq(reservations.id, reservationId),
         eq(reservations.restaurantId, auth.session.user.activeRestaurantId),
       ),
-      columns: { paidAmount: true, refundedAmount: true },
+      columns: { status: true, paidAmount: true, refundedAmount: true },
     });
 
     if (!row) {
       return { success: false, error: "Reservation not found" };
     }
 
+    // Nothing is refundable until the booking is cancelled, so report zero
+    // rather than a figure the refund action would then refuse.
     return {
       success: true,
-      data: { refundable: refundableCents(row.paidAmount, row.refundedAmount) / 100 },
+      data: {
+        refundable: isRefundableStatus(row.status)
+          ? refundableCents(row.paidAmount, row.refundedAmount) / 100
+          : 0,
+      },
     };
   } catch (error) {
     console.error("Failed to read refundable amount:", error);

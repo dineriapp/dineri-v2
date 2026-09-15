@@ -2,8 +2,10 @@ import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 
 import {
+  canRefund,
   centsToNumeric,
   checkRefundAmount,
+  isRefundableStatus,
   REFUND_ERRORS,
   refundableCents,
   refundStateOf,
@@ -102,5 +104,57 @@ describe("centsToNumeric", () => {
   it("produces the two-decimal string the numeric column expects", () => {
     assert.equal(centsToNumeric(2000), "20.00");
     assert.equal(centsToNumeric(5), "0.05");
+  });
+});
+
+describe("canRefund", () => {
+  const cancelledPaid = {
+    status: "cancelled",
+    paymentReference: "cs_test_1",
+    paidAmount: "50.00",
+    refundedAmount: "0",
+  };
+
+  it("allows a cancelled booking with money still on it", () => {
+    assert.equal(canRefund(cancelledPaid), true);
+  });
+
+  it("refuses every status other than cancelled", () => {
+    // Deposits are taken to cover a lost table. A booking that is still live,
+    // was honoured, or was a no-show keeps its deposit.
+    for (const status of ["pending", "confirmed", "seated", "completed", "no_show"]) {
+      assert.equal(
+        canRefund({ ...cancelledPaid, status }),
+        false,
+        `${status} must not be refundable`,
+      );
+    }
+  });
+
+  it("refuses a cancelled booking that was never paid", () => {
+    assert.equal(canRefund({ ...cancelledPaid, paidAmount: "0" }), false);
+  });
+
+  it("refuses a cancelled booking already fully refunded", () => {
+    assert.equal(canRefund({ ...cancelledPaid, refundedAmount: "50.00" }), false);
+  });
+
+  it("still allows one that is only partly refunded", () => {
+    assert.equal(canRefund({ ...cancelledPaid, refundedAmount: "20.00" }), true);
+  });
+
+  it("refuses a booking with no Stripe payment behind it", () => {
+    // Otherwise the button renders and the refund can only fail: there is no
+    // payment intent to refund against.
+    assert.equal(canRefund({ ...cancelledPaid, paymentReference: null }), false);
+  });
+});
+
+describe("isRefundableStatus", () => {
+  it("is cancelled only", () => {
+    assert.equal(isRefundableStatus("cancelled"), true);
+    assert.equal(isRefundableStatus("completed"), false);
+    assert.equal(isRefundableStatus(null), false);
+    assert.equal(isRefundableStatus(undefined), false);
   });
 });

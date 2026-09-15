@@ -25,7 +25,7 @@ export function ownerFromKey(key: string): string | null {
 }
 
 export function toBucketKey(input: string): string | null {
-  const value = input.trim();
+  const value = input?.trim();
   if (!value) return null;
 
   if (!/^https?:\/\//i.test(value)) {
