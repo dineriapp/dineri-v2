@@ -1,14 +1,3 @@
-/**
- * Rate-limit policy wiring (audit finding H-03).
- *
- * The public reservation actions used to fall through to the global ceiling,
- * which meant one caller could create hundreds of bookings a minute - and each
- * booking occupies its tables immediately, so that took a restaurant's floor
- * offline rather than merely creating junk rows.
- *
- * Run with:
- *   npx tsx --conditions=react-server --test src/lib/rate-limit/policies.test.ts
- */
 import assert from "node:assert/strict";
 import { test } from "node:test";
 
@@ -27,8 +16,6 @@ test("H-03: the reservation policies exist and are bounded", () => {
 });
 
 test("H-03: creating a booking is far tighter than the global ceiling", () => {
-  // The whole point of the finding: 300/min against a path that takes
-  // inventory was the wrong order of magnitude.
   assert.ok(
     RATE_LIMITS.publicReservation.limit < RATE_LIMITS.global.limit / 10,
     "reservation creation must not be anywhere near the global ceiling",
