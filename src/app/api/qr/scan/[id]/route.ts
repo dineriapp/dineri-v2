@@ -5,14 +5,30 @@ import { limitApi } from "@/lib/rate-limit/guard";
 import { RATE_LIMIT_MESSAGE, rateLimitHeaders } from "@/lib/rate-limit/http";
 import { siteUrl } from "@/lib/seo";
 import { bumpQRCodeScanCount } from "@/lib/server/func/qr-scans";
+import { venueSiteUrl, venueUrl } from "@/lib/venue-url";
 import { eq } from "drizzle-orm";
 import { NextRequest, NextResponse } from "next/server";
 
-function isSameOrigin(target: URL): boolean {
+function isOwnOrigin(target: URL): boolean {
+  const ours = [siteUrl(), venueSiteUrl()].filter((o): o is string => !!o);
+  return ours.some((origin) => {
+    try {
+      return new URL(origin).origin === target.origin;
+    } catch {
+      return false;
+    }
+  });
+}
+
+function canonicalTarget(target: URL): URL {
+  const legacy = target.pathname.match(/^\/r\/([^/]+)(\/.*)?$/);
+  if (!legacy) return target;
   try {
-    return target.origin === new URL(siteUrl()).origin;
+    return new URL(
+      `${venueUrl(decodeURIComponent(legacy[1]), legacy[2] ?? "")}${target.search}${target.hash}`,
+    );
   } catch {
-    return false;
+    return target;
   }
 }
 
@@ -58,8 +74,8 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ id: 
       }
     });
 
-    if (isSameOrigin(url)) {
-      return NextResponse.redirect(withUtm(url.toString(), QR_TAGS), 302);
+    if (isOwnOrigin(url)) {
+      return NextResponse.redirect(withUtm(canonicalTarget(url).toString(), QR_TAGS), 302);
     }
 
     return NextResponse.redirect(new URL(`/qr/${id}`, siteUrl()).toString(), 302);

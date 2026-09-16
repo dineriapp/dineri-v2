@@ -7,6 +7,7 @@ import { useRestaurantStore } from "@/stores/restaurant-store";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 
+import { venueUrl } from "@/lib/venue-url";
 type TopBarProps = {
   page?: string | string[];
   breadcrumbs?: string[];
@@ -75,7 +76,7 @@ const TopBar = ({
 
         {showViewButton && (
           <Link
-            href={`/r/${selectedRestaurant?.slug}`}
+            href={selectedRestaurant?.slug ? venueUrl(selectedRestaurant.slug) : "#"}
             target="_blank"
             className="inline-flex shrink-0 items-center gap-1 whitespace-nowrap rounded-xl bg-white px-2.5 py-2 text-xs font-semibold text-background hover:bg-white/90 sm:px-3"
           >

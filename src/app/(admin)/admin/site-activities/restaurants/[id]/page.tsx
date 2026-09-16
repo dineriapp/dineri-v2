@@ -25,6 +25,7 @@ import {
   type ActivityQuery,
 } from "../../_components";
 
+import { venueUrl } from "@/lib/venue-url";
 export const dynamic = "force-dynamic";
 
 export default async function VenueActivitiesPage({
@@ -72,7 +73,7 @@ export default async function VenueActivitiesPage({
         description="Everything this restaurant has done, newest first."
         action={
           <Link
-            href={`/r/${venue.slug}`}
+            href={venueUrl(venue.slug)}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex h-9 shrink-0 items-center gap-2 rounded-xl border border-white/10 bg-surface-1 px-3 text-xs font-medium transition hover:border-lime/30 hover:text-lime"

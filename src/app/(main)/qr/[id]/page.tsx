@@ -6,6 +6,7 @@ import { ArrowUpRight, ExternalLink, ShieldAlert } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { venueUrl } from "@/lib/venue-url";
 
 export const metadata: Metadata = {
   title: "Leaving Dineri",
@@ -75,7 +76,7 @@ const Page = async ({ params }: Props) => {
         </a>
 
         <Link
-          href={qr.restaurant?.slug ? `/r/${qr.restaurant.slug}` : "/"}
+          href={qr.restaurant?.slug ? venueUrl(qr.restaurant.slug) : "/"}
           className="mt-3 inline-flex w-full items-center justify-center rounded-3xl border border-border bg-card px-5 py-3 text-sm font-medium text-foreground transition-colors hover:bg-muted"
         >
           {qr.restaurant?.slug ? "Go to the restaurant page instead" : "Back to home"}

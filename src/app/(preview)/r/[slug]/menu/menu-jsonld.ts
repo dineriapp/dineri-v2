@@ -1,4 +1,4 @@
-import { absoluteUrl } from "@/lib/seo";
+import { venueUrl } from "@/lib/venue-url";
 import type { StripeCurrency } from "@/lib/stripe/types";
 import { resolveTags, type TagKey } from "@/utils/tags";
 
@@ -75,7 +75,7 @@ export function menuJsonLd({
 
   if (sections.length === 0) return null;
 
-  const menuUrl = absoluteUrl(`/r/${slug}/menu`);
+  const menuUrl = venueUrl(slug, "/menu");
 
   return {
     "@context": "https://schema.org",
@@ -85,6 +85,6 @@ export function menuJsonLd({
     url: menuUrl,
     inLanguage: "en",
     hasMenuSection: sections,
-    isPartOf: { "@id": `${absoluteUrl(`/r/${slug}`)}#restaurant` },
+    isPartOf: { "@id": `${venueUrl(slug)}#restaurant` },
   };
 }

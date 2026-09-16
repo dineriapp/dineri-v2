@@ -121,7 +121,7 @@ export function breadcrumbJsonLd(
       "@type": "ListItem",
       position: i + 1,
       name: step.name,
-      item: absoluteUrl(step.path),
+      item: /^https?:\/\//i.test(step.path) ? step.path : absoluteUrl(step.path),
     })),
   };
 }

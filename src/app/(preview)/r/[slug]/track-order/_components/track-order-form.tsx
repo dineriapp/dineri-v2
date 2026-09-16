@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { trackOrderAction } from "../actions";
 
+import { venuePath } from "@/lib/venue-url";
 type Props = {
   slug: string;
   restaurantName: string;
@@ -31,7 +32,7 @@ export default function TrackOrderForm({ slug, restaurantName }: Props) {
         return;
       }
 
-      router.push(`/r/${slug}/menu/order/success?order_id=${result.data.orderId}`);
+      router.push(`${venuePath(slug, "/menu/order/success")}?order_id=${result.data.orderId}`);
     } catch {
       setError("Something went wrong. Please try again.");
     } finally {
@@ -134,7 +135,7 @@ export default function TrackOrderForm({ slug, restaurantName }: Props) {
         {/* Actions */}
         <div className="mt-5 text-center">
           <Link
-            href={`/r/${slug}/menu`}
+            href={venuePath(slug, "/menu")}
             className="text-xs font-medium text-zinc-500 transition hover:text-zinc-700"
           >
             Back to menu

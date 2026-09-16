@@ -36,6 +36,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 
+import { venueUrl } from "@/lib/venue-url";
 type RestaurantSummary = Pick<
   InferSelectModel<typeof restaurant>,
   "id" | "name" | "slug" | "ownerId" | "createdAt"
@@ -298,7 +299,7 @@ export function UsersTable({ rows, selfId }: { rows: UserRow[]; selfId: string }
                       </span>
                       <div className="min-w-0">
                         <Link
-                          href={`/r/${restaurants[0].slug}`}
+                          href={venueUrl(restaurants[0].slug)}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="inline-flex items-center gap-1 truncate text-xs font-medium hover:text-lime"

@@ -20,6 +20,8 @@ import { Loader } from "lucide-react";
 import { Controller, FormProvider, useForm, useWatch } from "react-hook-form";
 import { toast } from "sonner";
 import { QRPreview } from "./qr-preview";
+import { venueUrl } from "@/lib/venue-url";
+import { useSelectedRestaurant } from "@/stores/restaurant-store";
 
 type Props = {
   children?: ReactNode;
@@ -29,6 +31,10 @@ type Props = {
 };
 
 export default function QrDialog({ children, open, editingRow, setOpen }: Props) {
+  const restaurant = useSelectedRestaurant();
+  // Where most codes should point. Shown as the hint so a merchant copies the
+  // venue host, not a platform URL that would cost the guest a redirect.
+  const venueHomeUrl = restaurant?.slug ? venueUrl(restaurant.slug) : "https://…";
   const [internalOpen, setInternalOpen] = useState(false);
   const createMutation = useCreateQRCode();
   const updateMutation = useUpdateQRCode();
@@ -166,7 +172,7 @@ export default function QrDialog({ children, open, editingRow, setOpen }: Props)
                         <Input
                           {...field}
                           className="h-10 rounded-lg w-full text-base sm:text-sm"
-                          placeholder="https://…"
+                          placeholder={venueHomeUrl}
                           aria-invalid={fieldState.invalid}
                         />
                         {fieldState.invalid && (

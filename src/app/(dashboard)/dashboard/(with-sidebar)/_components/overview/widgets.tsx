@@ -23,6 +23,7 @@ import { toast } from "sonner";
 import { ACTIVITY_GROUP_STYLE } from "@/components/shared/activity-group-style";
 import type { ActivityEntry } from "@/lib/activity/definitions";
 
+import { venueUrl } from "@/lib/venue-url";
 export const OverviewCard = ({
   className,
   children,
@@ -555,7 +556,7 @@ export const SharePageCard = ({ slug }: { slug: string }) => {
 
   const copyUrl = async () => {
     try {
-      const url = `${window.location.origin}/r/${slug}`;
+      const url = venueUrl(slug);
       await navigator.clipboard.writeText(url);
       setCopied(true);
       toast.success("Copied", { description: "Page URL is on your clipboard." });
@@ -592,7 +593,7 @@ export const SharePageCard = ({ slug }: { slug: string }) => {
       </div>
       <div className="mt-3 flex flex-wrap gap-2 text-[11px]">
         <a
-          href={`/r/${slug}`}
+          href={venueUrl(slug)}
           target="_blank"
           rel="noreferrer"
           className="inline-flex items-center gap-1 rounded-lg bg-white px-3 py-1.5 font-semibold text-background hover:bg-white/90"

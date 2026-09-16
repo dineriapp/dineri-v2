@@ -22,6 +22,7 @@ import { and, eq, inArray } from "drizzle-orm";
 import { orderSchema, OrderSchemaType } from "./schema";
 import { sendOrderBookingEmail } from "@/lib/email/sender-functions/send-order-email";
 import { getNextOrderNumber } from "@/lib/server/func/order-number";
+import { venueUrl } from "@/lib/venue-url";
 
 type orderItemsDataType = {
   menuItemId: string;
@@ -220,7 +221,6 @@ export async function processOrder(
       const secretKey = decrypt(rest?.stripe?.secret ?? "");
       const stripe = await getValidStripeClient(secretKey);
       if (!stripe) return { success: false, error: "Invalid Stripe configuration." };
-      const baseUrl = process.env.BETTER_AUTH_URL || "http://localhost:3000";
       try {
         const session = await stripe.checkout.sessions.create({
           mode: "payment",
@@ -232,8 +232,8 @@ export async function processOrder(
             email,
             fulfillment,
           },
-          success_url: `${baseUrl}/r/${rest.slug}/menu/order/success?session_id={CHECKOUT_SESSION_ID}`,
-          cancel_url: `${baseUrl}/r/${rest.slug}/menu`,
+          success_url: `${venueUrl(rest.slug, "/menu/order/success")}?session_id={CHECKOUT_SESSION_ID}`,
+          cancel_url: venueUrl(rest.slug, "/menu"),
           customer_email: email,
           client_reference_id: restaurantId,
         });

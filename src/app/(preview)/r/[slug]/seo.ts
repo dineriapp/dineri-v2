@@ -2,7 +2,8 @@ import "server-only";
 
 import { db } from "@/drizzle/db";
 import { restaurant } from "@/drizzle/schema";
-import { absoluteUrl, SITE_NAME, truncate } from "@/lib/seo";
+import { SITE_NAME, truncate } from "@/lib/seo";
+import { venueUrl } from "@/lib/venue-url";
 import { eq } from "drizzle-orm";
 import type { Metadata } from "next";
 import { cache } from "react";
@@ -59,7 +60,9 @@ type VenuePageMetadata = {
 };
 
 export function venueMetadata(venue: VenueSeo, options: VenuePageMetadata = {}): Metadata {
-  const path = `/r/${venue.slug}${options.subpath ?? ""}`;
+  // Absolute: a relative canonical would resolve against metadataBase - the
+  // platform host - and point Google at a redirect.
+  const url = venueUrl(venue.slug, options.subpath);
   const title = options.title ?? venue.name;
   const description = options.description ?? venueDescription(venue);
   const image = venueImage(venue);
@@ -67,14 +70,14 @@ export function venueMetadata(venue: VenueSeo, options: VenuePageMetadata = {}):
   return {
     title,
     description,
-    alternates: { canonical: path },
+    alternates: { canonical: url },
     robots: options.noIndex ? { index: false, follow: true } : undefined,
     openGraph: {
       type: "website",
       siteName: venue.name,
       title,
       description,
-      url: absoluteUrl(path),
+      url,
       images: image ? [{ url: image, alt: venue.name }] : undefined,
     },
     twitter: {
@@ -116,7 +119,7 @@ function openingHoursSpecification(venue: VenueSeo) {
 }
 
 export function venueJsonLd(venue: VenueSeo): Record<string, unknown> {
-  const path = `/r/${venue.slug}`;
+  const url = venueUrl(venue.slug);
   const image = venueImage(venue);
   const socials = [
     venue.instagram,
@@ -136,10 +139,10 @@ export function venueJsonLd(venue: VenueSeo): Record<string, unknown> {
   return {
     "@context": "https://schema.org",
     "@type": "Restaurant",
-    "@id": `${absoluteUrl(path)}#restaurant`,
+    "@id": `${url}#restaurant`,
     name: venue.name,
     description: venueDescription(venue),
-    url: absoluteUrl(path),
+    url,
     ...(image ? { image } : {}),
     ...(venue.logo?.url ? { logo: venue.logo.url } : {}),
     ...(venue.phone ? { telephone: venue.phone } : {}),
@@ -155,7 +158,7 @@ export function venueJsonLd(venue: VenueSeo): Record<string, unknown> {
       : {}),
     ...(hours.length > 0 ? { openingHoursSpecification: hours } : {}),
     ...(socials.length > 0 ? { sameAs: socials } : {}),
-    ...(venue.is_menu_published ? { hasMenu: absoluteUrl(`${path}/menu`) } : {}),
+    ...(venue.is_menu_published ? { hasMenu: venueUrl(venue.slug, "/menu") } : {}),
     acceptsReservations,
   };
 }

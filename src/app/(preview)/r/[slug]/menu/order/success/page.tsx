@@ -23,6 +23,7 @@ import {
   statusMeta,
 } from "@/app/(dashboard)/dashboard/(with-sidebar)/orders/_components/utils";
 
+import { venuePath } from "@/lib/venue-url";
 export const metadata: Metadata = {
   title: "Order confirmed",
   description: "Your order confirmation.",
@@ -242,13 +243,13 @@ const Page = async ({ params, searchParams }: Props) => {
         {/* Actions */}
         <div className="mt-6 flex flex-col gap-2.5 sm:flex-row">
           <Link
-            href={`/r/${slug}/menu`}
+            href={venuePath(slug, "/menu")}
             className="inline-flex flex-1 items-center justify-center gap-2 rounded-2xl bg-zinc-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-zinc-800"
           >
             <UtensilsCrossed className="h-4 w-4" /> Back to menu
           </Link>
           <Link
-            href={`/r/${slug}`}
+            href={venuePath(slug)}
             className="inline-flex flex-1 items-center justify-center gap-2 rounded-2xl border border-zinc-200 bg-white px-5 py-3 text-sm font-semibold text-zinc-700 transition hover:bg-zinc-50"
           >
             Visit {order ? restaurantName : "restaurant"} <ArrowRight className="h-4 w-4" />

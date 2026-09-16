@@ -1,6 +1,6 @@
-import { geolocation, ipAddress, waitUntil } from "@vercel/functions";
 import { NextRequest, NextResponse } from "next/server";
-import { analytics, AnalyticsEventType } from "./lib/analytics/analytics";
+
+import { routeRequest, type HostRouterConfig } from "./lib/host-router";
 import { consume } from "./lib/rate-limit/core";
 import { isRateLimitExempt } from "./lib/rate-limit/exempt";
 import {
@@ -11,6 +11,7 @@ import {
 } from "./lib/rate-limit/http";
 import {
   CLIENT_IP_HEADER,
+  REQUEST_METHOD_HEADER,
   clientIpHeaderValue,
   describeProxyTrust,
   resolveClientIp,
@@ -18,8 +19,8 @@ import {
 } from "./lib/rate-limit/ip";
 import { globalKey, globalPrefetchKey } from "./lib/rate-limit/keys";
 import { RATE_LIMITS, type RateLimitPolicy } from "./lib/rate-limit/policies";
-import { getDeviceType } from "./utils/global";
-import { getTrafficSource } from "./utils/trafic-source";
+import { siteUrl } from "./lib/seo";
+import { hostnameOf, venueSiteUrl } from "./lib/venue-url";
 
 const GLOBAL_POLICY: RateLimitPolicy = RATE_LIMITS.global;
 const PREFETCH_POLICY: RateLimitPolicy = RATE_LIMITS.globalPrefetch;
@@ -45,6 +46,7 @@ const INTERNAL_ONLY_HEADERS = ["x-skip-enrichment"];
 function sanitizeForwardingHeaders(req: NextRequest, resolved: ResolvedClientIp): Headers {
   const headers = new Headers(req.headers);
   headers.set(CLIENT_IP_HEADER, clientIpHeaderValue(resolved));
+  headers.set(REQUEST_METHOD_HEADER, req.method);
   if (!resolved.trusted) {
     headers.delete("x-forwarded-for");
     headers.delete("x-real-ip");
@@ -54,55 +56,25 @@ function sanitizeForwardingHeaders(req: NextRequest, resolved: ResolvedClientIp)
   }
   return headers;
 }
+const HOST_ROUTER: HostRouterConfig = (() => {
+  const platformOrigin = siteUrl();
+  const venueOrigin = venueSiteUrl();
+  return {
+    platformHost: hostnameOf(platformOrigin),
+    platformOrigin,
+    venueHost: venueOrigin ? hostnameOf(venueOrigin) : null,
+    venueOrigin,
+  };
+})();
 
-function trackPageview(req: NextRequest, pathname: string) {
-  const cleanPath = pathname.replace(/\/$/, "");
-  // must start with /r/
-  if (!cleanPath.startsWith("/r/")) {
-    return;
-  }
-  if (cleanPath.endsWith("/track-order")) {
-    return;
-  }
-  // detect route type
-  const isMenu = cleanPath.endsWith("/menu");
-  const isReserve = cleanPath.endsWith("/reserve");
-  // extract slug safely
-  const slug = cleanPath.replace(/^\/r\//, "").replace(/\/(menu|reserve)$/, "");
-
-  // fallback guard
-  if (!slug) {
-    return;
-  }
-  const geo = geolocation(req);
-  const ip = ipAddress(req);
-  const viewport = getDeviceType(req);
-  const traffic = getTrafficSource(req);
-  // event type
-  let eventType: AnalyticsEventType = "pageview";
-  if (isMenu) {
-    eventType = "menu";
-  } else if (isReserve) {
-    eventType = "reserve";
-  }
-  waitUntil(
-    analytics
-      .track(slug, eventType, {
-        ip,
-        country: geo?.country,
-        city: geo?.city,
-        device: viewport,
-        traffic,
-      })
-      .catch((err) => {
-        console.error("analytics.track failed", { slug, eventType, err });
-      }),
-  );
+function requestHost(req: NextRequest): string {
+  return req.headers.get("host") ?? req.headers.get("x-forwarded-host") ?? "";
 }
 
 export default async function proxy(req: NextRequest) {
-  const { pathname } = req.nextUrl;
+  const { pathname, search } = req.nextUrl;
   const resolved = resolveClientIp(req.headers);
+
   try {
     if (!isRateLimitExempt(pathname)) {
       const blocked = await enforceGlobalLimit(req, resolved.bucket);
@@ -113,14 +85,20 @@ export default async function proxy(req: NextRequest) {
   } catch (err) {
     console.error("Global rate limit failed", err);
   }
-  try {
-    trackPageview(req, pathname);
-  } catch (err) {
-    console.error(err);
+
+  const decision = routeRequest(requestHost(req), pathname, search, HOST_ROUTER);
+
+  if (decision.kind === "redirect") {
+    return NextResponse.redirect(decision.to, decision.status);
   }
-  return NextResponse.next({
-    request: { headers: sanitizeForwardingHeaders(req, resolved) },
-  });
+
+  const headers = sanitizeForwardingHeaders(req, resolved);
+
+  if (decision.kind === "rewrite") {
+    return NextResponse.rewrite(new URL(decision.to, req.url), { request: { headers } });
+  }
+
+  return NextResponse.next({ request: { headers } });
 }
 
 export const config = {

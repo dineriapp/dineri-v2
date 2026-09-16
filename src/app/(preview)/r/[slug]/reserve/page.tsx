@@ -8,9 +8,12 @@ import ReservePage from "./_components/reserve-page";
 import { ReservationUnavailable } from "./_components/reservation-unavailable";
 import { getRestaurantForReservationPage } from "./query";
 import { breadcrumbJsonLd } from "@/lib/seo";
+import { venueUrl } from "@/lib/venue-url";
+import { TrackVisit } from "../_components/track-visit";
 
 type Props = {
   params: Promise<{ slug: string }>;
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -28,8 +31,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   });
 }
 
-const Page = async ({ params }: Props) => {
-  const { slug } = await params;
+const Page = async ({ params, searchParams }: Props) => {
+  const [{ slug }, query] = await Promise.all([params, searchParams]);
   const restaurantRecord = await getRestaurantForReservationPage(slug);
   if (!restaurantRecord) return notFound();
 
@@ -49,13 +52,14 @@ const Page = async ({ params }: Props) => {
 
   return (
     <>
+      <TrackVisit slug={slug} event="reserve" searchParams={query} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(
             breadcrumbJsonLd([
-              { name: restaurantRecord.name, path: `/r/${slug}` },
-              { name: "Book a table", path: `/r/${slug}/reserve` },
+              { name: restaurantRecord.name, path: venueUrl(slug) },
+              { name: "Book a table", path: venueUrl(slug, "/reserve") },
             ]),
           ),
         }}

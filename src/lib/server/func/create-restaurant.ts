@@ -1,6 +1,7 @@
 "use server";
 
 import slugify from "slugify";
+import { isReservedSlug } from "@/lib/reserved-slugs";
 
 import { ensureAuthenticatedUser } from "@/lib/auth/guards";
 
@@ -13,14 +14,15 @@ import { DEFAULT_APPEARANCE } from "@/lib/types/appearnace";
 import { Data } from "@/lib/types/onboarding";
 import { eq } from "drizzle-orm";
 
-function defaultPopups(venueName: string, slug: string, baseUrl: string) {
+import { venueUrl } from "@/lib/venue-url";
+function defaultPopups(venueName: string, slug: string) {
   return [
     {
       badge: "Welcome",
       title: `Welcome to ${venueName}! 👋`,
       body: "We're delighted to have you here. Explore our delicious menu, reserve your table in seconds, and discover everything we have prepared to make your visit a memorable dining experience.",
       cta: "View menu",
-      ctaUrl: `${baseUrl}/r/${slug}/menu`,
+      ctaUrl: venueUrl(slug, "/menu"),
       onPage: "restaurant" as const,
       trigger_after_seconds: 0 as const,
       status: "live" as const,
@@ -30,7 +32,7 @@ function defaultPopups(venueName: string, slug: string, baseUrl: string) {
       title: "Hungry? Let's get started 👋",
       body: "Take a look through our full menu, discover customer favorites, and order the dishes you love. Fresh flavors and great experiences are just a few clicks away.",
       cta: "Start ordering",
-      ctaUrl: `${baseUrl}/r/${slug}/menu`,
+      ctaUrl: venueUrl(slug, "/menu"),
       onPage: "menu" as const,
       trigger_after_seconds: 0 as const,
       status: "live" as const,
@@ -40,7 +42,7 @@ function defaultPopups(venueName: string, slug: string, baseUrl: string) {
       title: "Book your table 👋",
       body: "Planning your next meal with us? Reserve your table in just a few clicks, and we'll have everything ready so you can relax and enjoy your visit.",
       cta: "Book now",
-      ctaUrl: `${baseUrl}/r/${slug}/reserve`,
+      ctaUrl: venueUrl(slug, "/reserve"),
       onPage: "reserve" as const,
       trigger_after_seconds: 0 as const,
       status: "live" as const,
@@ -83,12 +85,14 @@ export const createRestaurant = async (data: Data): Promise<Response> => {
     let counter = 1;
 
     while (true) {
-      const existingRestaurant = await db.query.restaurant.findFirst({
-        where: eq(restaurant.slug, slug),
-        columns: {
-          id: true,
-        },
-      });
+      const existingRestaurant = isReservedSlug(slug)
+        ? { id: "reserved" }
+        : await db.query.restaurant.findFirst({
+            where: eq(restaurant.slug, slug),
+            columns: {
+              id: true,
+            },
+          });
 
       if (!existingRestaurant) {
         break;
@@ -150,9 +154,8 @@ export const createRestaurant = async (data: Data): Promise<Response> => {
         onboardingCompletedAt: new Date(),
       });
 
-      const baseUrl = process.env.BETTER_AUTH_URL || "http://localhost:3000";
       await tx.insert(popups).values(
-        defaultPopups(data.venue, slug, baseUrl).map((p) => ({
+        defaultPopups(data.venue, slug).map((p) => ({
           ...p,
           restaurantId: createdRestaurant.id,
         })),

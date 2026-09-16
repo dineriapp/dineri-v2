@@ -13,6 +13,7 @@ import { cn, timeAgo } from "@/lib/utils";
 import { ArrowUpRight, ChevronLeft, ChevronRight, Search } from "lucide-react";
 import Link from "next/link";
 
+import { venueUrl } from "@/lib/venue-url";
 /** Every list page here is driven by the same three query params. */
 export type ActivityQuery = { page?: string; group?: string; q?: string };
 
@@ -237,7 +238,7 @@ export function ActivityTable({
                         {entry.venue.name}
                       </Link>
                       <Link
-                        href={`/r/${entry.venue.slug}`}
+                        href={venueUrl(entry.venue.slug)}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-1 font-jetbrains-mono text-[10px] text-muted-foreground hover:text-foreground"

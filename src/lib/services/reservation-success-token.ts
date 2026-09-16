@@ -1,5 +1,6 @@
 import "server-only";
 
+import { venuePath, venueUrl } from "@/lib/venue-url";
 import { createHmac, timingSafeEqual } from "node:crypto";
 
 const TOKEN_PURPOSE = "reservation-success-v1";
@@ -35,7 +36,14 @@ export function verifyReservationSuccessToken(
   return timingSafeEqual(expected, provided);
 }
 
+function reservationSuccessQuery(reservationId: string): string {
+  return `?reservationId=${reservationId}&t=${reservationSuccessToken(reservationId)}`;
+}
+
 export function reservationSuccessPath(slug: string, reservationId: string): string {
-  const token = reservationSuccessToken(reservationId);
-  return `/r/${encodeURIComponent(slug)}/reserve/success?reservationId=${reservationId}&t=${token}`;
+  return `${venuePath(slug, "/reserve/success")}${reservationSuccessQuery(reservationId)}`;
+}
+
+export function reservationSuccessUrl(slug: string, reservationId: string): string {
+  return `${venueUrl(slug, "/reserve/success")}${reservationSuccessQuery(reservationId)}`;
 }

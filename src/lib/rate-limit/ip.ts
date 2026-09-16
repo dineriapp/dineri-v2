@@ -45,6 +45,8 @@ export const UNTRUSTED_IP = "untrusted";
 
 export const CLIENT_IP_HEADER = "x-dineri-client-ip";
 
+export const REQUEST_METHOD_HEADER = "x-dineri-method";
+
 export const UNTRUSTED_SENTINEL_IP = "192.0.2.0";
 
 export function clientIpHeaderValue(resolved: ResolvedClientIp): string {

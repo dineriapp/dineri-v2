@@ -58,6 +58,7 @@ import {
 } from "@/lib/types/reservation-policy";
 import { AppearanceBackground } from "@/components/shared/appearance-background";
 
+import { venuePath } from "@/lib/venue-url";
 const ReservePage = ({
   restaurant,
   slug,
@@ -262,7 +263,7 @@ const ReservePage = ({
       >
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
           <Link
-            href={`/r/${slug}`}
+            href={venuePath(slug)}
             className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium transition hover:opacity-80"
             style={{ ...sectionStyle(), color: settings.sectionItemHeadingColor }}
           >

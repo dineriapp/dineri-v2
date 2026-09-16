@@ -14,6 +14,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { PageHeading, Pagination, SearchForm, type ActivityQuery } from "../_components";
 
+import { venueUrl } from "@/lib/venue-url";
 export const dynamic = "force-dynamic";
 
 const BASE = "/admin/site-activities/restaurants";
@@ -83,7 +84,7 @@ export default async function ActivityRestaurantsPage({
                     <div className="min-w-0">
                       <div className="truncate text-sm font-medium">{venue.name}</div>
                       <Link
-                        href={`/r/${venue.slug}`}
+                        href={venueUrl(venue.slug)}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-1 font-jetbrains-mono text-[10px] text-muted-foreground hover:text-foreground"

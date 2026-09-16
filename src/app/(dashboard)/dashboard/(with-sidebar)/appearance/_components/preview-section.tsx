@@ -59,6 +59,7 @@ import RestaurantStatusBadge from "./sections/restaurant-status-badge";
 import SocialIcons from "./sections/social-icons";
 import { AppearanceBackground } from "@/components/shared/appearance-background";
 
+import { venueUrl } from "@/lib/venue-url";
 const WEEKDAY_NAMES = [
   "Sunday",
   "Monday",
@@ -484,7 +485,7 @@ export const PreviewSection = ({
         return (
           <Link
             key={key}
-            href={key === "book" ? `/r/${restaurant.slug}/reserve` : href}
+            href={key === "book" ? venueUrl(restaurant.slug, "/reserve") : href}
             className={cls}
             style={linkStyle}
             target="_blank"
@@ -785,7 +786,7 @@ export const PreviewSection = ({
   };
 
   const share = async () => {
-    const url = withUtm(`${window.location.origin}/r/${restaurant.slug}`, SHARE_TAGS);
+    const url = withUtm(venueUrl(restaurant.slug), SHARE_TAGS);
     if (navigator.share) {
       try {
         await navigator.share({ title: restaurant.name, url });
@@ -864,7 +865,7 @@ export const PreviewSection = ({
           >
             <div className="mx-auto flex max-w-xl items-center justify-between gap-2 px-4 py-3">
               <Link
-                href={isSlugPage ? `/r/${restaurant.slug}/track-order` : ""}
+                href={isSlugPage ? venueUrl(restaurant.slug, "/track-order") : ""}
                 className="text-xs font-medium transition hover:opacity-80"
                 style={{ color: settings.heading_color }}
               >
@@ -1279,7 +1280,7 @@ export const PreviewSection = ({
 
               <div className="px-5 pb-5 pt-2">
                 <Link
-                  href={`/r/${restaurant.slug}/menu`}
+                  href={venueUrl(restaurant.slug, "/menu")}
                   target="_blank"
                   className="inline-flex pv-link w-full items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition hover:opacity-90"
                   style={{ ...buttonStyle(), borderRadius: buttonRadius }}

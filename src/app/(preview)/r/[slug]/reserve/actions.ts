@@ -17,7 +17,11 @@ import { limitAnonymousAction } from "@/lib/rate-limit/guard";
 import { createReservationRecord } from "@/lib/services/reservation-create";
 import { isPriorityRequest, resolveDepositAmount } from "@/lib/services/reservation-deposit";
 import { checkoutExpiresAt } from "@/lib/services/reservation-hold";
-import { reservationSuccessPath } from "@/lib/services/reservation-success-token";
+import {
+  reservationSuccessPath,
+  reservationSuccessUrl,
+} from "@/lib/services/reservation-success-token";
+import { venueUrl } from "@/lib/venue-url";
 import { getOnlineReservationsStatus } from "@/lib/services/reservation-online-availability";
 import {
   RESERVATIONS_NOT_ON_PLAN_ERROR,
@@ -205,7 +209,6 @@ export async function createReservationAction(
     }
 
     try {
-      const baseUrl = process.env.BETTER_AUTH_URL || "http://localhost:3000";
       const currency = restaurantRecord.stripe?.currency ?? "usd";
 
       const session = await stripeClient!.checkout.sessions.create({
@@ -229,8 +232,9 @@ export async function createReservationAction(
           restaurantId,
           reservationId,
         },
-        success_url: `${baseUrl}${reservationSuccessPath(input.slug, reservationId)}`,
-        cancel_url: `${baseUrl}/r/${input.slug}/reserve`,
+        // Absolute and on the venue host: the guest is returning from Stripe.
+        success_url: reservationSuccessUrl(input.slug, reservationId),
+        cancel_url: venueUrl(input.slug, "/reserve"),
         customer_email: email,
         client_reference_id: restaurantId,
         expires_at: checkoutExpiresAt(settings),

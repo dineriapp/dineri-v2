@@ -39,6 +39,7 @@ import { toast } from "sonner";
 import { ReservationSuccessDataType } from "../query";
 import { AppearanceBackground } from "@/components/shared/appearance-background";
 
+import { venuePath } from "@/lib/venue-url";
 const ReservationSuccessPage = ({
   slug,
   data,
@@ -166,7 +167,7 @@ const ReservationSuccessPage = ({
       >
         <div className="mx-auto flex max-w-2xl items-center justify-between px-4 py-3">
           <Link
-            href={`/r/${slug}`}
+            href={venuePath(slug)}
             className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium transition hover:opacity-80"
             style={{ ...sectionStyle(), color: settings.sectionItemHeadingColor }}
           >
@@ -338,14 +339,14 @@ const ReservationSuccessPage = ({
             </button>
           )}
           <Link
-            href={`/r/${slug}/menu`}
+            href={venuePath(slug, "/menu")}
             className="inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold transition"
             style={{ ...secondaryButtonStyle(), borderRadius: buttonRadius }}
           >
             <UtensilsCrossed className="h-4 w-4" /> View menu
           </Link>
           <Link
-            href={`/r/${slug}`}
+            href={venuePath(slug)}
             className={`inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold transition ${canDownloadTicket ? "" : "min-[420px]:col-span-2"}`}
             style={{ ...secondaryButtonStyle(), borderRadius: buttonRadius }}
           >

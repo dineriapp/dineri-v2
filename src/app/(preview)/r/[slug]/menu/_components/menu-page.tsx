@@ -42,9 +42,9 @@ import {
 } from "@/stores/cart-store";
 import { setMenuView, useMenuUIStore } from "@/stores/menu-ui-store";
 import { AppearanceBackground } from "@/components/shared/appearance-background";
+import { venuePath } from "@/lib/venue-url";
 const EMPTY_CART: CartItem[] = [];
 
-/** Survives a refresh: `/r/<slug>/menu?step=checkout`. */
 const STEP_PARAM = "step";
 const CHECKOUT_STEP = "checkout";
 
@@ -447,7 +447,7 @@ const MenuPage = ({
       >
         <div className="mx-auto flex max-w-3xl items-center justify-between px-4 py-3">
           <Link
-            href={`/r/${restaurant?.slug}`}
+            href={restaurant?.slug ? venuePath(restaurant.slug) : "#"}
             className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium transition hover:opacity-80"
             style={{
               ...sectionStyleWithoutPadding,
@@ -1278,7 +1278,7 @@ const MenuPage = ({
             </p>
             <button
               type="button"
-              onClick={() => router.push(`/r/${restaurant.slug}`)}
+              onClick={() => router.push(venuePath(restaurant.slug))}
               className="mt-6 inline-flex w-full items-center justify-center gap-1.5 rounded-full px-5 py-2.5 text-sm font-semibold"
               style={{ ...buttonStyle(), borderRadius: buttonRadius }}
             >
