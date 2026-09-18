@@ -59,7 +59,7 @@ import RestaurantStatusBadge from "./sections/restaurant-status-badge";
 import SocialIcons from "./sections/social-icons";
 import { AppearanceBackground } from "@/components/shared/appearance-background";
 
-import { venueUrl } from "@/lib/venue-url";
+import { venueDisplayUrl, venueUrl } from "@/lib/venue-url";
 const WEEKDAY_NAMES = [
   "Sunday",
   "Monday",
@@ -847,7 +847,7 @@ export const PreviewSection = ({
             <span className="h-2.5 w-2.5 rounded-full bg-amber-400/70" />
             <span className="h-2.5 w-2.5 rounded-full bg-emerald-500/70" />
             <span className="ml-3 truncate font-mono text-[10px] text-muted-foreground">
-              dineri.app/r/{restaurant.slug}
+              {venueDisplayUrl(restaurant.slug)}
             </span>
           </div>
         )}

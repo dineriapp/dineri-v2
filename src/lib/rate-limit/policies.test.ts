@@ -25,9 +25,6 @@ test("H-03: creating a booking is far tighter than the global ceiling", () => {
 });
 
 test("H-03: creating is tighter than checking, which is tighter than ordering", () => {
-  // Booking takes inventory, so it is the most restricted. Availability is
-  // called repeatedly as the guest fills the form, so it gets more headroom -
-  // but it is the most expensive query in the app, so it stays bounded.
   assert.ok(
     RATE_LIMITS.publicReservation.limit < RATE_LIMITS.publicAvailability.limit,
     "a guest checks availability more often than they book",

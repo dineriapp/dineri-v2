@@ -1,4 +1,5 @@
 "use client";
+import { venueDisplayUrl } from "@/lib/venue-url";
 import { PopupType } from "@/drizzle/types";
 import { useRestaurantPopups, useTogglePopupStatus } from "@/lib/tanstack-react-query/hooks/popups";
 import { useSelectedRestaurant } from "@/stores/restaurant-store";
@@ -134,7 +135,7 @@ const SettingsPopupsClientPage = () => {
             <div className="mb-2 flex items-center justify-between">
               <span className="text-xs font-medium text-muted-foreground">Live preview</span>
               <span className="font-jetbrains-mono text-[9px] uppercase text-muted-foreground">
-                dineri.app/{slug}
+                {venueDisplayUrl(slug)}
               </span>
             </div>
             <PreviewFrame popup={selected} slug={slug} />
@@ -216,7 +217,7 @@ const PreviewFrame = ({ popup, slug }: { popup: PopupType | null; slug: string }
         <span className="h-2 w-2 rounded-full bg-white/70" />
       </div>
       <div className="flex-1 truncate rounded-md border border-white/5 bg-background/60 px-2 py-0.5 text-center font-jetbrains-mono text-[8px] text-muted-foreground">
-        dineri.app/{slug}
+        {venueDisplayUrl(slug)}
       </div>
     </div>
 

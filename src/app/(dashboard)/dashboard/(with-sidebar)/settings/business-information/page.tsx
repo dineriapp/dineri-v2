@@ -1,4 +1,5 @@
 "use client";
+import { venueDisplayUrl } from "@/lib/venue-url";
 import { MultiImageUploader } from "@/components/shared/image-uploader";
 import { Field, FieldError, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
@@ -165,7 +166,7 @@ const Page = () => {
                 </FieldLabel>
                 <div className="flex items-stretch overflow-hidden rounded-lg border border-white/10 bg-background focus-within:border-white/50">
                   <span className="flex items-center gap-2 border-r border-white/10 px-3 text-xs text-muted-foreground">
-                    <Globe className="h-3.5 w-3.5" /> dineri.app/
+                    <Globe className="h-3.5 w-3.5" /> {venueDisplayUrl("")}
                   </span>
                   <Input
                     {...field}

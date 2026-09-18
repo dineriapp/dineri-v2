@@ -23,7 +23,7 @@ import { toast } from "sonner";
 import { ACTIVITY_GROUP_STYLE } from "@/components/shared/activity-group-style";
 import type { ActivityEntry } from "@/lib/activity/definitions";
 
-import { venueUrl } from "@/lib/venue-url";
+import { venueDisplayUrl, venuePath, venueUrl } from "@/lib/venue-url";
 export const OverviewCard = ({
   className,
   children,
@@ -47,10 +47,6 @@ export const CardHeading = ({ eyebrow, title }: { eyebrow: string; title: string
   </div>
 );
 
-/**
- * Groups the page into scannable bands. Without these the overview reads as one
- * undifferentiated wall of cards.
- */
 export const SectionHeading = ({
   eyebrow,
   title,
@@ -74,11 +70,6 @@ export const SectionHeading = ({
   </div>
 );
 
-/**
- * Keeps a plan-gated widget on the page instead of hiding it - the merchant can
- * see the shape of what they are missing, blurred, with the upgrade path on top.
- * `tile` is for small stat cards; `panel` is for full cards with room for copy.
- */
 export const LockedPanel = ({
   feature,
   requiredPlan,
@@ -571,10 +562,10 @@ export const SharePageCard = ({ slug }: { slug: string }) => {
       <div className="font-jetbrains-mono uppercase tracking-[0.12rem] text-[10px] text-muted-foreground">
         Your page
       </div>
-      <h3 className="mt-1 truncate font-inter-tight text-lg font-semibold">/r/{slug}</h3>
+      <h3 className="mt-1 truncate font-inter-tight text-lg font-semibold">{venuePath(slug)}</h3>
       <div className="mt-3 flex items-center justify-between rounded-xl border border-white/10 bg-background px-3 py-2">
         <span className="font-jetbrains-mono uppercase tracking-[0.12rem] truncate text-[10px] text-muted-foreground">
-          {typeof window !== "undefined" ? window.location.origin : ""}/r/{slug}
+          {venueDisplayUrl(slug)}
         </span>
         <button
           onClick={copyUrl}

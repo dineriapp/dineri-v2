@@ -34,6 +34,10 @@ export function venueUrl(slug: string, sub?: string): string {
   return `${venueSiteUrl() ?? siteUrl()}${venuePath(slug, sub)}`;
 }
 
+export function venueDisplayUrl(slug: string, sub?: string): string {
+  return venueUrl(slug, sub).replace(/^https?:\/\//, "");
+}
+
 export function hostnameOf(url: string | null | undefined): string {
   if (!url) return "";
   try {

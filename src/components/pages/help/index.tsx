@@ -19,6 +19,7 @@ import {
 import { SupportTicketDialog } from "./_components/support-ticket-dialog";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { venueDisplayUrl } from "@/lib/venue-url";
 
 type Section = {
   id: string;
@@ -438,7 +439,7 @@ const features: {
         items: [
           {
             t: "Open your menu page",
-            d: "Your menu lives at /menu (e.g. dineri.app/your-restaurant/menu). Customize the layout from the bottom-right.",
+            d: `Your menu lives at /menu (e.g. ${venueDisplayUrl("your-restaurant", "/menu")}). Customize the layout from the bottom-right.`,
           },
           {
             t: "Add menu items",

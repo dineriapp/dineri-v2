@@ -1,7 +1,14 @@
 import assert from "node:assert/strict";
 import { afterEach, describe, it } from "node:test";
 
-import { hostnameOf, isVenueMode, venuePath, venueSiteUrl, venueUrl } from "./venue-url";
+import {
+  hostnameOf,
+  isVenueMode,
+  venueDisplayUrl,
+  venuePath,
+  venueSiteUrl,
+  venueUrl,
+} from "./venue-url";
 
 const ORIGINAL = { ...process.env };
 
@@ -75,5 +82,23 @@ describe("hostnameOf", () => {
     assert.equal(hostnameOf("https://Dine.BIO:443/x"), "dine.bio");
     assert.equal(hostnameOf(null), "");
     assert.equal(hostnameOf("not a url"), "");
+  });
+});
+
+describe("venueDisplayUrl", () => {
+  it("is the venue URL without its scheme, for address-bar mockups", () => {
+    setEnv({ NEXT_PUBLIC_VENUE_SITE_URL: "https://dine.bio" });
+    assert.equal(venueDisplayUrl("food-mac"), "dine.bio/food-mac");
+    assert.equal(venueDisplayUrl("food-mac", "/menu"), "dine.bio/food-mac/menu");
+  });
+
+  it("gives the prefix a merchant types their slug after", () => {
+    setEnv({ NEXT_PUBLIC_VENUE_SITE_URL: "https://dine.bio" });
+    assert.equal(venueDisplayUrl(""), "dine.bio/");
+    setEnv({
+      NEXT_PUBLIC_VENUE_SITE_URL: undefined,
+      NEXT_PUBLIC_BETTER_AUTH_URL: "https://dineri.app",
+    });
+    assert.equal(venueDisplayUrl(""), "dineri.app/r/");
   });
 });
