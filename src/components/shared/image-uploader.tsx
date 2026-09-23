@@ -28,6 +28,22 @@ import {
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 
+function isAwsS3Url(url?: string): boolean {
+  if (!url) return false;
+  try {
+    const { hostname } = new URL(url);
+    return (
+      hostname.endsWith(".amazonaws.com") ||
+      hostname === "amazonaws.com" ||
+      hostname.includes(".s3.") ||
+      hostname.startsWith("s3.") ||
+      hostname.endsWith(".s3.amazonaws.com")
+    );
+  } catch {
+    return false;
+  }
+}
+
 // Types
 export type UploadedFile = {
   url: string;
@@ -556,6 +572,13 @@ export function MultiImageUploader({
   }
 
   async function deleteFile(fileId: string, key: string) {
+    const file = files.find((f) => f.id === fileId);
+    const isAws = isAwsS3Url(file?.url);
+    if (!isAws) {
+      dispatch({ type: "DELETE_SUCCESS", payload: { id: fileId } });
+      onDelete?.();
+      return;
+    }
     deletedKeysRef.current.add(key);
     dispatch({ type: "DELETE_START", payload: { id: fileId } });
     try {
