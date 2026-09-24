@@ -45,7 +45,7 @@ export const PLANS = [
 export const STRIPE_PLANS = PLANS.filter((plan) => plan.priceId !== "") satisfies StripePlan[];
 
 export type PlanName = (typeof PLANS)[number]["name"];
-
+ 
 type PlanPrice = {
   monthly: number;
   yearly: number;
