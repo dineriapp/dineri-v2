@@ -24,8 +24,8 @@ export const PLANS = [
   },
   {
     name: "growth",
-    priceId: "price_1TYnB2SGotLD6A2M0FxMhi87",
-    annualDiscountPriceId: "price_1TYnBsSGotLD6A2MK623e6PG",
+    priceId: "price_1UJGUEFqX8ZTbd1527lov8FC",
+    annualDiscountPriceId: "price_1UJGWfFqX8ZTbd15CInuiTWh",
     monthlyPrice: 29,
     yearlyPrice: 288,
     limits: toStripeLimits(PLAN_LIMITS.growth),
@@ -33,8 +33,8 @@ export const PLANS = [
   },
   {
     name: "scale",
-    priceId: "price_1TYnCuSGotLD6A2Ml8kZwqOG",
-    annualDiscountPriceId: "price_1TYnF1SGotLD6A2Mz2BpYqzz",
+    priceId: "price_1UJGXwFqX8ZTbd15xxbQVfz8",
+    annualDiscountPriceId: "price_1UJGZPFqX8ZTbd15OeWytpCQ",
     monthlyPrice: 69,
     yearlyPrice: 738,
     limits: toStripeLimits(PLAN_LIMITS.scale),
