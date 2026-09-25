@@ -22,6 +22,10 @@ export function userActionKey(userId: string, action: string): string {
   return `${PREFIX}:action:${safe(userId)}:${safe(action)}`;
 }
 
+export function recipientKey(recipientHash: string, kind: string, window: string): string {
+  return `${PREFIX}:recipient:${safe(kind)}:${safe(window)}:${safe(recipientHash)}`;
+}
+
 export function anonActionKey(ip: string, action: string): string {
   return `${PREFIX}:action:ip:${safe(ip)}:${safe(action)}`;
 }

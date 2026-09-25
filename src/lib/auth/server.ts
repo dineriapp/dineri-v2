@@ -1,18 +1,20 @@
 import { db } from "@/drizzle/db";
 import { restaurant, subscription, userRoleEnum } from "@/drizzle/schema";
 import { UserRoleType } from "@/drizzle/types";
-import { sendEmailAction } from "@/server/actions/send-email.action";
 import { resetPasswordTemplate, verifyEmailTemplate } from "@/lib/email/templates";
+import { sendEmailAction } from "@/server/actions/send-email.action";
 import { stripe } from "@better-auth/stripe";
 import { APIError, betterAuth, BetterAuthOptions, User } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { nextCookies } from "better-auth/next-js";
-import { customSession, openAPI } from "better-auth/plugins";
+import { admin, captcha, customSession } from "better-auth/plugins";
 import { and, eq, or } from "drizzle-orm";
+import { authRateLimitStorage } from "../rate-limit/auth-storage";
+import { CLIENT_IP_HEADER } from "../rate-limit/ip";
 import { stripeClient } from "../stripe";
 import { PlanName, STRIPE_PLANS } from "../stripe/plans";
-import { CLIENT_IP_HEADER } from "../rate-limit/ip";
-import { admin } from "better-auth/plugins";
+import { captchaOptions } from "./captcha";
+import { allowAuthEmail } from "./email-throttle";
 
 const ALLOWED_ROLES = userRoleEnum.enumValues;
 
@@ -28,6 +30,7 @@ const options = {
     enabled: true,
     window: 60,
     max: 100,
+    customStorage: authRateLimitStorage,
     customRules: {
       // Email/password sign in
       "/sign-in/email": {
@@ -123,6 +126,10 @@ const options = {
     autoSignIn: false,
     onExistingUserSignUp: async () => {},
     sendResetPassword: async ({ user, url }) => {
+      if (!(await allowAuthEmail("reset", user.email))) {
+        console.warn("[auth] Password reset email suppressed: per-recipient limit reached");
+        return;
+      }
       await sendEmailAction({
         to: user.email,
         subject: "Reset your Dineri password",
@@ -135,6 +142,10 @@ const options = {
     sendOnSignIn: true,
     autoSignInAfterVerification: true,
     sendVerificationEmail: async ({ user, url }: { user: User; url: string }) => {
+      if (!(await allowAuthEmail("verify", user.email))) {
+        console.warn("[auth] Verification email suppressed: per-recipient limit reached");
+        return;
+      }
       await sendEmailAction({
         to: user.email,
         subject: "Confirm your email - welcome to Dineri",
@@ -183,7 +194,7 @@ const options = {
       },
     },
   },
-  plugins: [openAPI()],
+  plugins: [captcha(captchaOptions())],
 } satisfies BetterAuthOptions;
 
 export const auth = betterAuth({
@@ -273,7 +284,7 @@ export const auth = betterAuth({
     stripe({
       stripeClient: stripeClient,
       stripeWebhookSecret: process.env.STRIPE_WEBHOOK_SECRET!,
-      createCustomerOnSignUp: true,
+      createCustomerOnSignUp: false,
       subscription: {
         enabled: true,
         plans: STRIPE_PLANS,

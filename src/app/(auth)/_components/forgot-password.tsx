@@ -4,9 +4,11 @@ import { Field, FieldError, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { PillButton } from "@/components/ui/ui-kit/PillButton";
 import { authClient } from "@/lib/auth/client";
+import { captchaHeaders, preloadRecaptcha } from "@/lib/recaptcha/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader } from "lucide-react";
 import Link from "next/link";
+import { useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
@@ -33,13 +35,23 @@ const ForgotPasswordPage = () => {
   });
   const { isSubmitting } = form.formState;
 
+  useEffect(preloadRecaptcha, []);
+
   const handleSubmit = async (data: forgotSchemaValues) => {
+    let headers: Awaited<ReturnType<typeof captchaHeaders>>;
+    try {
+      headers = await captchaHeaders("password_reset");
+    } catch {
+      toast.error("Something went wrong. Please try again.");
+      return;
+    }
     await authClient.requestPasswordReset(
       {
         ...data,
         redirectTo: "/reset-password",
       },
       {
+        headers,
         onError: (error) => {
           toast.error(error.error.message || "Failed to send password reset email");
         },

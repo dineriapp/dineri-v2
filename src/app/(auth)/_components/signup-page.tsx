@@ -8,12 +8,13 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { EyeIcon, EyeOffIcon, Loader } from "lucide-react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Controller, FormProvider, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
 import { SocialAuthButtons } from "./social-login/social-auth-buttons";
 import { useCheckEmailExists } from "@/lib/tanstack-react-query/apis/check-email";
+import { captchaHeaders, preloadRecaptcha } from "@/lib/recaptcha/client";
 
 const signupSchema = z.object({
   venue: z.string().trim().min(1, "Venue name is required").max(150, "Venue name is too long"),
@@ -40,6 +41,7 @@ const SignUpPage = () => {
   const Icon = showPassword ? EyeOffIcon : EyeIcon;
   const [loading, setLoading] = useState<boolean>(false);
   const router = useRouter();
+  useEffect(preloadRecaptcha, []);
   const form = useForm<signupSchemaValues>({
     resolver: zodResolver(signupSchema),
     defaultValues: {
@@ -62,6 +64,7 @@ const SignUpPage = () => {
         ...data,
         name: data.venue,
         callbackURL: "/dashboard",
+        fetchOptions: { headers: await captchaHeaders("signup") },
       });
       if (res.error) {
         return toast.error(res.error.message);

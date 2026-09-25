@@ -8,11 +8,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { EyeIcon, EyeOffIcon, Loader } from "lucide-react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Controller, FormProvider, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
 import { SocialAuthButtons } from "./social-login/social-auth-buttons";
+import { captchaHeaders, preloadRecaptcha } from "@/lib/recaptcha/client";
 
 const signinSchema = z.object({
   email: z
@@ -37,6 +38,7 @@ const SigninPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const Icon = showPassword ? EyeOffIcon : EyeIcon;
   const [loading, setLoading] = useState<boolean>(false);
+  useEffect(preloadRecaptcha, []);
   const form = useForm<signinSchemaValues>({
     resolver: zodResolver(signinSchema),
     defaultValues: {
@@ -54,6 +56,7 @@ const SigninPage = () => {
         email: data.email,
         password: data.password,
         rememberMe: true,
+        fetchOptions: { headers: await captchaHeaders("login") },
       });
       if (res.error) {
         if (res.error.code === "EMAIL_NOT_VERIFIED") {

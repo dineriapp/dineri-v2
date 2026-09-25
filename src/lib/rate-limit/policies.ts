@@ -21,6 +21,8 @@ export const RATE_LIMITS = {
   smtpTest: { limit: 5, windowSeconds: 300 },
   smtpVerify: { limit: 10, windowSeconds: 300 },
   testEmail: { limit: 10, windowSeconds: 60 },
+  authEmailHourly: { limit: 3, windowSeconds: 3600 },
+  authEmailDaily: { limit: 6, windowSeconds: 86400 },
 } as const satisfies Record<string, RateLimitPolicy>;
 
 export type RateLimitPolicyName = keyof typeof RATE_LIMITS;
