@@ -3,10 +3,10 @@ import { cn } from "@/lib/utils";
 
 export const Stats = () => {
   const stats = [
-    { value: "+38%", label: "avg. menu views after switching", lime: true },
-    { value: "4 min", label: "median time to publish", lime: false },
-    { value: "6", label: "tools replaced by one link", lime: false },
-    { value: "€0", label: "commission per reservation", lime: false },
+    { value: "€0", label: "comossion on every reservation", lime: true },
+    { value: "10 min", label: "from sign up to go live", lime: false },
+    { value: "24/7", label: "online bookings accepted", lime: false },
+    { value: "100%", label: "of every sale is for you", lime: false },
   ];
   return (
     <section className="border-y border-foreground/5">

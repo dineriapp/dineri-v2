@@ -20,14 +20,14 @@ const SUPPORT_LABEL: Record<PlanLimits["supportChannel"], string> = {
 
 export const PLAN_TAGLINE: Record<PlanName, string> = {
   starter: "Everything to get one venue live.",
-  growth: "For venues taking orders and bookings.",
-  scale: "For groups running several venues.",
+  growth: "Everything your restaurant needs to fill tables",
+  scale: "Scale across every venue you own",
 };
 
 export const PLAN_PERIOD: Record<PlanName, string> = {
-  starter: "Free forever",
-  growth: "per venue / month",
-  scale: "per venue / month",
+  starter: "Free",
+  growth: "/ month",
+  scale: "/ month",
 };
 
 export const PLAN_CTA: Record<PlanName, string> = {

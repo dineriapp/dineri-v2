@@ -6,12 +6,12 @@ import { RichHeadline } from "@/components/ui/ui-kit/RichHeadline";
 export const FinalCTA = () => {
   const c = {
     sectionNumber: "03",
-    sectionLabel: "Ship today",
-    headline: [{ plain: "Your bio link, " }, { lime: "earning " }, { plain: "by tonight." }],
+    sectionLabel: "Get started",
+    headline: [{ plain: "Your restaurant, " }, { lime: "can be live " }, { plain: "by tonight." }],
     description:
-      "Build your menu, take bookings and start selling - all from one link. Free forever, upgrade only when you outgrow it.",
-    cta: { label: "Start free → dineri.app/start", href: "/start" },
-    microcopy: "No credit card · €0 commission · GDPR",
+      "Set up your Dineri page in 10 minutes. We handle everything. You focus on your guests.",
+    cta: { label: "Start your free month", href: "/start" },
+    microcopy: "No credit card · No commission · Cancel anytime",
   };
 
   return (

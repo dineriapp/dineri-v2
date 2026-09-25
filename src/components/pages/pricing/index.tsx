@@ -75,9 +75,9 @@ const PricingPage = () => {
       <PageHeader
         number="04"
         label="Pricing"
-        headline={[{ plain: "Free to start. " }, { lime: "€0 commission " }, { plain: "forever." }]}
+        headline={[{ plain: "Less than " }, { lime: "one empty table " }, { plain: "per month" }]}
         richClassName="max-w-4xl"
-        description="Pay per venue, never per cover. Upgrade only when you outgrow the free plan."
+        description="Before you decide, see what you're already losing. Our free ROI calculator shows exactly how much no-shows, missed reservations and commission fees are costing your restaurant every month."
       />
 
       <section className="relative">
