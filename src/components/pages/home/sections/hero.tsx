@@ -6,18 +6,18 @@ import { Check, Play } from "lucide-react";
 import Link from "next/link";
 
 const COPY = {
-  eyebrow: "v3.0 · new dashboard · reservations + online orders",
+  eyebrow: "BUILT FOR INDEPENDENT RESTAURANT",
   headline: {
-    lead: "The operating system123",
-    middle: "for your",
-    tail: "restaurant",
-    emphasis: "bio link.",
+    lead: "The quiet",
+    middle: "infrastructure",
+    tail: "behind full",
+    emphasis: "tables",
   },
   subhead:
-    "Replace six tools with one. Menu, reservations, reviews, social, QR and analytics - under a single link your guests already follow.",
-  ctaPrimary: "Start free - no card",
-  ctaSecondary: "Watch 90s tour",
-  badges: ["Live in one sitting", "Per-table QR codes", "€0 commission, forever"],
+    "No-shows, missed reservations and outdated websites are costing you money everv day. Dineri  fixes that. One platform, zero commission, full tables.",
+  ctaPrimary: "Start free",
+  ctaSecondary: "Watch a quick demo",
+  badges: ["Live in 10 mintes", "First month free", "No credit card required"],
 } as const;
 
 export const Hero = () => {

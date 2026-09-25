@@ -17,7 +17,7 @@ export const PhoneMockup = ({ className }: PhoneMockupProps) => {
         <div className="flex items-center gap-2">
           <div className="h-px w-10 bg-lime/40" />
           <div className="font-jetbrains-mono uppercase tracking-[0.12rem] whitespace-nowrap text-[10px] text-lime">
-            +312 menu views today
+            +12 new reservations today
           </div>
         </div>
       </div>
@@ -42,7 +42,7 @@ export const PhoneMockup = ({ className }: PhoneMockupProps) => {
             </div>
             <div className="min-w-0 flex-1">
               <div className="flex items-center gap-1 text-[13px] font-semibold">
-                Trattoria Milano
+                Dineri Café
                 {true && (
                   <svg className="h-3 w-3 text-blue-500" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 2L9.5 5.5L5.5 5L5 9L2 12L5 15L5.5 19L9.5 18.5L12 22L14.5 18.5L18.5 19L19 15L22 12L19 9L18.5 5L14.5 5.5L12 2Z" />
@@ -72,7 +72,7 @@ export const PhoneMockup = ({ className }: PhoneMockupProps) => {
 
           {/* Tabs */}
           <div className="mb-2.5 flex gap-1 border-b border-neutral-100 pb-1.5 text-[10px]">
-            {["Menu", "Reviews", "Hours", "Gift"].map((t) => (
+            {["Menu", "Order", "FAQ", "Events"].map((t) => (
               <span
                 key={t}
                 className={cn(
@@ -108,6 +108,16 @@ export const PhoneMockup = ({ className }: PhoneMockupProps) => {
                 desc: "Mascarpone, espresso, cocoa",
                 price: "€9",
               },
+              {
+                name: "Branzino al forno",
+                desc: "Sea bass, capers, lemon, olive oil",
+                price: "€26",
+              },
+              {
+                name: "Bistecca alla fiorentina",
+                desc: "T-bone, rosemary, sea salt",
+                price: "€38",
+              },
             ].map((item) => (
               <div
                 key={item.name}
@@ -124,7 +134,7 @@ export const PhoneMockup = ({ className }: PhoneMockupProps) => {
 
           {/* CTA */}
           <button className="mt-3 flex w-full items-center justify-center gap-1.5 rounded-full bg-neutral-900 py-2.5 text-[11px] font-medium text-white">
-            Book a table →
+            See full menu →
           </button>
         </div>
       </div>
@@ -133,7 +143,7 @@ export const PhoneMockup = ({ className }: PhoneMockupProps) => {
       <div className="absolute -bottom-3 -right-20 z-20 hidden xl:block">
         <div className="flex items-center gap-2">
           <div className="font-jetbrains-mono uppercase tracking-[0.12rem] whitespace-nowrap text-[10px] text-muted-foreground">
-            QR scan · Table 14
+            +3 new orders for delivery
           </div>
           <div className="h-px w-10 bg-white/20" />
         </div>
