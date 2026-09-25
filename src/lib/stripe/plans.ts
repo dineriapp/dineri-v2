@@ -26,8 +26,8 @@ export const PLANS = [
     name: "growth",
     priceId: "price_1UJGUEFqX8ZTbd1527lov8FC",
     annualDiscountPriceId: "price_1UJGWfFqX8ZTbd15CInuiTWh",
-    monthlyPrice: 29,
-    yearlyPrice: 288,
+    monthlyPrice: 129,
+    yearlyPrice: 1284,
     limits: toStripeLimits(PLAN_LIMITS.growth),
     features: PLAN_FEATURES.growth,
   },
@@ -35,8 +35,8 @@ export const PLANS = [
     name: "scale",
     priceId: "price_1UJGXwFqX8ZTbd15xxbQVfz8",
     annualDiscountPriceId: "price_1UJGZPFqX8ZTbd15OeWytpCQ",
-    monthlyPrice: 69,
-    yearlyPrice: 738,
+    monthlyPrice: 169,
+    yearlyPrice: 1500,
     limits: toStripeLimits(PLAN_LIMITS.scale),
     features: PLAN_FEATURES.scale,
   },
@@ -45,7 +45,7 @@ export const PLANS = [
 export const STRIPE_PLANS = PLANS.filter((plan) => plan.priceId !== "") satisfies StripePlan[];
 
 export type PlanName = (typeof PLANS)[number]["name"];
- 
+
 type PlanPrice = {
   monthly: number;
   yearly: number;
