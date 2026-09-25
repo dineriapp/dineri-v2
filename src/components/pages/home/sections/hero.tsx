@@ -8,7 +8,7 @@ import Link from "next/link";
 const COPY = {
   eyebrow: "v3.0 · new dashboard · reservations + online orders",
   headline: {
-    lead: "The operating system",
+    lead: "The operating system123",
     middle: "for your",
     tail: "restaurant",
     emphasis: "bio link.",
