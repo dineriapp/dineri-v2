@@ -7,11 +7,8 @@ import { Check } from "lucide-react";
 export const Comparison = () => {
   const c = {
     sectionNumber: "02",
-    sectionLabel: "Why switch",
-    headline: [
-      { plain: "Bio link tools weren't built for restaurants. " },
-      { muted: "Dineri is." },
-    ],
+    sectionLabel: "Why Dineri",
+    headline: [{ plain: "Most restaurants are leaving money on the table. " }, { muted: "Why?" }],
     generic: {
       title: "Generic bio link",
       items: [

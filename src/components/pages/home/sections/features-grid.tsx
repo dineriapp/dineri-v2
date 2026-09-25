@@ -149,16 +149,17 @@ export const FeatureGrid = () => {
             <h2 className="font-inter-tight mt-5 text-balance text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-[56px]">
               <RichHeadline
                 tokens={[
-                  { plain: "One link. Every " },
-                  { white: "conversion surface " },
-                  { plain: "your restaurant needs." },
+                  { plain: "One link. Everything " },
+                  { white: "your restaurant " },
+                  { plain: "needs." },
                 ]}
               />
             </h2>
           </div>
           <p className="text-base leading-relaxed text-muted-foreground">
-            Built around the actions guests already take - viewing the menu, booking, reviewing,
-            scanning a QR - and instrumented end to end.
+            From the moment a guest discovers your restaurant to the moment they leave. Dineri
+            manages everything in between. Reservations, host management, food ordering and your
+            public page. All connected. Zero commission.
           </p>
         </div>
 
@@ -167,21 +168,21 @@ export const FeatureGrid = () => {
             {
               num: "01",
               iconKey: "menu",
-              title: "Smart Menu",
-              desc: "Drag-and-drop builder with allergens, modifiers and live availability. Mark a dish sold out and your menu updates instantly.",
+              title: "Menu",
+              desc: "Update your menu yourself. Change dishes, prices and photos in seconds, from your phone, anywhere. No technical skills needed",
               visualKey: "availability",
             },
             {
               num: "02",
               iconKey: "calendar",
               title: "Reservations",
-              desc: "Direct bookings without commission. Table mapping, deposits, waitlist and SMS reminders included.",
+              desc: "Every missed call is a missed table. Every no-show is money gone. Dineri fixes both. Zero comossion, guests show up or you get paid",
               visualKey: "timeslots",
             },
             {
               num: "03",
               iconKey: "qr",
-              title: "Table QR",
+              title: "QR Code",
               desc: "Generate per-table QR codes that open your menu instantly. Track scans by seat.",
               visualKey: "qr",
             },
@@ -195,14 +196,14 @@ export const FeatureGrid = () => {
             {
               num: "05",
               iconKey: "star",
-              title: "Reviews Hub",
+              title: "Reviews",
               desc: "Aggregate Google, Tripadvisor and TheFork reviews. Auto-reply with AI in your tone.",
               visualKey: "reviews",
             },
             {
               num: "06",
               iconKey: "globe",
-              title: "Online Orders",
+              title: "Food ordering",
               desc: "Take orders straight from the menu and get paid through your own Stripe account. Track every order to the door.",
               visualKey: "orderflow",
             },
