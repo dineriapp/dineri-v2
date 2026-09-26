@@ -45,19 +45,19 @@ const compareSections = PLAN_COMPARISON;
 const faqs = [
   {
     q: "Do you charge per reservation or order?",
-    a: "Never. Dineri is a flat subscription. 100% of your revenue stays with you.",
+    a: "Dineri never charges commission. You pay one flat monthly subscription that's it. Standard payment processing fees from Stripe apply, as with any online payment. You can find the full details in Stripe's terms.",
   },
   {
-    q: "Can I switch plans later?",
-    a: "Yes - upgrade or downgrade anytime. Annual plans are pro-rated.",
+    q: "Can I cancel anytime?",
+    a: "Yes. No long-term contracts, no cancellation fees. Cancel with one click from your dashboard, whenever you want. Monthly plans cancel immediately. Annual plans are valid until the end of your billing period. But, life is unpredictable. If you're on an annual plan and something unexpected comes up reach out. We're always open to find a solution together.",
   },
   {
-    q: "Is there a free plan?",
-    a: "Yes. Starter is free forever and includes one venue with the smart menu, QR codes and 7 days of analytics.",
+    q: "Do you intergrate with my current POS system?",
+    a: "POS integrations are currently in development. Once live, they will be included in your existing plan at no extra cost.",
   },
   {
-    q: "Do you offer discounts for groups?",
-    a: "We offer custom pricing for chains and groups starting at 5 venues. Contact sales.",
+    q: "Do I need technical skills to use Dineri?",
+    a: "Not at all. Dineri was built together with restaurant owners and their teams, so everything is designed to be simple and self-explanatory. No technical knowledge needed. Like anything new, it takes a moment to get familiar. If you can use Instagram, you can use Dineri.",
   },
 ];
 
@@ -276,13 +276,14 @@ const PricingPage = () => {
                 /FAQ
               </div>
               <h2 className="font-inter-tight mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
-                Pricing questions, answered.
+                Still not sure? Let's talk
               </h2>
               <p className="mt-4 max-w-sm text-sm text-muted-foreground">
-                Still curious? Talk to our team - we&apos;ll match you with the right plan.
+                We'll walk you trough everything and help you figure out if Dineri is the right fit
+                for your restaurant.
               </p>
               <Link href="/demo" className="mt-6 inline-block">
-                <PillButton variant="outline">Talk to sales</PillButton>
+                <PillButton variant="outline">Book a call</PillButton>
               </Link>
             </div>
             <dl className="space-y-3">
