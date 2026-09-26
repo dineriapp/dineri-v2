@@ -7,66 +7,74 @@ import Link from "next/link";
 const features = [
   {
     num: "01",
-    eyebrow: "Reservations",
-    title: "No more no-shows",
-    desc: "Let guests book a table directly with automatic confirmations and optional prepayment. Always organized, no hassle.",
+    eyebrow: "No-show protection",
+    title: "No shows? Not anymore",
+    desc: "Every no-show is money you never see. Dineri protects your revenue with automatic reminders and optional deposit so guests show up or you get paid.",
     image: "/images/feature-noshows.jpg",
     bullets: [
-      "Auto confirmations & reminders",
-      "Optional prepayment & deposits",
-      "Waitlist + table mapping",
+      "No-shows cost you money. Reminders fix that",
+      "Optional deposit. Guests commit or you get paid",
+      "No middleman. Guests book directly",
     ],
   },
   {
     num: "02",
     eyebrow: "Orders",
-    title: "Order system",
-    desc: "Keep 100% of your revenue. Direct orders, zero commissions. Your orders. Your money.",
+    title: "Delivery platforms take 30%. Dineri takes zero",
+    desc: "Accept takeaway and delivery orders directly through your Dineri page. No commission. Every order goes straight to your bank account.",
     image: "/images/feature-orders.jpg",
     bullets: [
-      "0% commission, ever",
-      "Pickup, delivery & dine-in",
-      "Stripe & local payment methods",
+      "Set up in minutes. Start taking orders today",
+      "Pickup and delivery. Fully includded",
+      "Guests order in seconds. No app needed",
     ],
   },
   {
     num: "03",
     eyebrow: "QR codes",
-    title: "Track every scan",
-    desc: "Generate personalized QR codes and track every scan in real time. See which codes perform best and optimize your marketing strategy.",
+    title: "One scan, instant access",
+    desc: "Create a QR code in seconds. Link it to your menu, reservation page or any URL you want. Track how many times it gets scanned and see what actually works.",
     image: "/images/feature-qr.jpg",
     bullets: [
-      "Per-table & per-campaign QR",
-      "Real-time scan analytics",
-      "Branded, downloadable PDFs",
+      "Create and link to anything in seconds",
+      "Track every scan. See what works",
+      "Use it on flyers, windows or social media",
     ],
   },
   {
     num: "04",
     eyebrow: "FAQ",
-    title: "FAQ in one click",
-    desc: "Easily add a FAQ section to your page. Answer your guests' most common questions and cut down on unnecessary calls.",
+    title: "Stop answering the same questions every day",
+    desc: "Add a FAQ section to your Dineri page in seconds. Answer your guests most common questions once and let your page do the talking.",
     image: "/images/feature-faq.jpg",
-    bullets: ["Pre-built question templates", "Multilingual answers", "Reduces inbound calls 40%+"],
+    bullets: [
+      "Do I need a reservation? Are you dog friendly? Answered once",
+      "Less time on the phone. More time for your guests",
+      "Add, edit or remove questions anytime",
+    ],
   },
   {
     num: "05",
-    eyebrow: "Bookings",
-    title: "Reservation system",
-    desc: "Let guests book a table directly through your page. Automatic confirmation and cancellation emails, prepayment options and review requests.",
+    eyebrow: "Reservations",
+    title: "Full tables. Every night",
+    desc: "Guests book directly through your Dineri page. 24/7, zero commission and fully automated. Confirmations, cancellations, reminders and refunds all handled for you.",
     image: "/images/feature-reservations.jpg",
-    bullets: ["Email + SMS workflows", "Post-visit review requests", "Sync with Google Calendar"],
+    bullets: [
+      "24/7 bookings. Never miss a reservation",
+      "Zero commission. Every booking is yours",
+      "Automatic confirmations, reminders en refunds",
+    ],
   },
   {
     num: "06",
     eyebrow: "Menu",
-    title: "Digital menu",
-    desc: "Put your menu online with categories, prices and allergen information. Update it in real time from your dashboard. Simple, fast and always up to date.",
+    title: "Always up to date",
+    desc: "Update your menu yourself. Change or add dishes, prices and photos in seconds from your phone. No technical skills needed.",
     image: "/images/feature-menu.jpg",
     bullets: [
-      "Allergens, modifiers & add-ons",
-      "Live availability toggles",
-      "Drag-and-drop builder",
+      "Add dishes, prices, photos and allergens",
+      "Changes go live instantly",
+      "Works perfectly on any phone, where ever you are",
     ],
   },
 ] as const;
@@ -77,8 +85,8 @@ const FeaturesPage = () => {
       <PageHeader
         number="02"
         label="Features"
-        headline={[{ plain: "Your restaurant's " }, { lime: "digital home." }]}
-        description="Showcase your menu, attract new guests and manage everything from one powerful platform, built for restaurants that want to grow."
+        headline={[{ plain: "Everything your restaurant needs. " }, { lime: "Nothing you don't." }]}
+        description="One platform that handles reservations, orders, host management and your public page. Zero commission. Always."
       />
 
       <section className="relative">
@@ -139,18 +147,18 @@ const FeaturesPage = () => {
 
           <div className="mt-24 flex flex-col items-center gap-4 rounded-3xl border border-white/5 bg-surface-1 px-8 py-14 text-center">
             <div className="font-jetbrains-mono uppercase tracking-[0.12rem] text-[11px] text-lime">
-              READY WHEN YOU ARE
+              GET STARTED
             </div>
             <h3 className="font-inter-tight max-w-2xl text-3xl font-bold tracking-tight sm:text-4xl">
-              All of this. Live by tonight.
+              Your restaurant. Live tonight
             </h3>
             <div className="mt-4 flex flex-wrap justify-center gap-3">
               <Link href="/sign-up">
-                <PillButton size="lg">Start free - no card</PillButton>
+                <PillButton size="lg">Start your free month</PillButton>
               </Link>
               <Link href="/demo">
                 <PillButton size="lg" variant="outline">
-                  Request a demo
+                  Book a demo
                 </PillButton>
               </Link>
             </div>

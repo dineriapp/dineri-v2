@@ -7,52 +7,52 @@ const values = [
   {
     icon: Compass,
     title: "Restaurant-first",
-    desc: "Every feature is co-designed with operators. If it doesn't help a venue serve guests better, it doesn't ship.",
+    desc: "Every decision starts with one question — does this help a restaurant serve guests better? If not, it doesn't ship.",
   },
   {
     icon: HeartHandshake,
     title: "Zero commission, always",
-    desc: "We charge a flat subscription. Your reservations, orders and revenue are 100% yours.",
+    desc: "We charge a flat subscription. Your reservations, orders and revenue are 100% yours. No cuts, no surprises, ever.",
   },
   {
     icon: Sparkles,
     title: "Quietly powerful",
-    desc: "Software should disappear into the work. Fast defaults, considered details, no unnecessary toggles.",
+    desc: "The best software disappears into the work. Fast, intuitive and designed to get out of your way.",
   },
   {
     icon: Flag,
-    title: "Built in Milan",
-    desc: "Crafted in Italy with the rigor of European design.",
+    title: "Rooted in Rotterdam",
+    desc: "Founded in the Netherlands. Built for independent restaurants worldwide.",
   },
 ];
 
 const stats = [
-  { value: "€0", label: "Commission per booking" },
-  { value: "6", label: "Interface languages" },
-  { value: "2022", label: "Founded in Milan" },
-  { value: "24/7", label: "Bookings, always open" },
+  { value: "€0", label: "comossion on every reservation" },
+  { value: "10 min", label: "from sign up to go live" },
+  { value: "24/7", label: "online bookings accepted" },
+  { value: "100%", label: "of every sale is for you" },
 ];
 
 const timeline = [
   {
-    year: "2022",
-    title: "The first link",
-    desc: "Two co-founders - one chef, one engineer - ship a single bio link for a Milan trattoria.",
-  },
-  {
     year: "2023",
-    title: "Reservations & QR",
-    desc: "Direct, commission-free reservations and per-table QR codes launch.",
+    title: "The idea",
+    desc: "On holiday on a small island, Julian, the founder, picked up his phone to find a restaurant for dinner. The websites didn't load properly. Basic information was missing. Are you open? Where are you? Can I reserve a table? What's on the menu? And when he finally found a place, he was redirected to three different platforms just to book a table. That was the moment. So he started building Dineri.",
   },
   {
     year: "2024",
-    title: "Going global",
-    desc: "Online ordering and payments arrive, with analytics for every venue.",
+    title: "Building the foundation",
+    desc: "We started building Dineri from the ground up. Working closely with different types of restaurants, from small bistros to busy beach clubs, we mapped out how they actually operate, what slows them down and what they're missing.",
+  },
+  {
+    year: "2025",
+    title: "Building and refining",
+    desc: "With a clear picture of what restaurants needed, we got to work. Features were built, tested with real restaurant owners and refined based on their feedback. Then tested again. No feature shipped without a restaurant owner telling us it actually worked.",
   },
   {
     year: "2026",
-    title: "v3.0 - the OS",
-    desc: "A unified dashboard for menu, reservations, reviews, orders and analytics.",
+    title: "Live",
+    desc: "In 2026, Dineri goes live. One platform, built from the ground up for independent restaurants worldwide. No commission, no complexity, no compromises. The quiet infrastructure behind full tables.",
   },
 ];
 
@@ -83,13 +83,13 @@ const AboutPage = () => {
           </div>
           <div className="space-y-5 text-base leading-relaxed text-muted-foreground sm:text-lg">
             <p>
-              Restaurants are stitched together with seven SaaS tools, three spreadsheets and a chat
-              group. Each charges a fee, none talk to each other, and the team in the dining room
-              pays the price.
+              Every night, independent restaurants lose money to no-shows, missed reservations and
+              delivery platforms taking a cut. They manage it all with a patchwork of tools that
+              were never built for them
             </p>
             <p>
-              Dineri is one platform - fast, beautiful, restaurant-native - that every guest reaches
-              through a single link. No commissions, no middlemen, no compromises.
+              Dineri was built to fix that. One platform. Zero commission. Built for the people who
+              actually run the restaurant.
             </p>
           </div>
         </div>
@@ -155,7 +155,7 @@ const AboutPage = () => {
               /STORY
             </div>
             <h2 className="font-inter-tight mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
-              From one trattoria to twelve thousand.
+              Why Dineri exists
             </h2>
           </div>
 
@@ -190,18 +190,18 @@ const AboutPage = () => {
             />
             <div className="relative">
               <div className="font-jetbrains-mono uppercase tracking-[0.12rem] text-[11px] text-lime">
-                /JOIN US
+                /GET STARTED
               </div>
               <h2 className="font-inter-tight mx-auto mt-4 max-w-2xl text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
                 Build the future of hospitality with us.
               </h2>
               <div className="mt-8 flex flex-wrap justify-center gap-3">
                 <Link href="/sign-up">
-                  <PillButton size="lg">Start free</PillButton>
+                  <PillButton size="lg">Start your free month</PillButton>
                 </Link>
                 <Link href="/demo">
                   <PillButton size="lg" variant="outline">
-                    Talk to the team
+                    Book a demo
                   </PillButton>
                 </Link>
               </div>
