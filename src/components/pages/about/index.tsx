@@ -63,11 +63,11 @@ const AboutPage = () => {
         number="05"
         label="About"
         headline={[
-          { plain: "We build the " },
-          { lime: "operating system " },
-          { plain: "for modern restaurants." },
+          { plain: "Built for the " },
+          { lime: "people who " },
+          { plain: "feed the world" },
         ]}
-        description="Dineri replaces six tools with one - menu, reservations, reviews, social, QR and analytics. Quietly powerful software for the people who feed the world."
+        description="Independent restaurants are the heart of every city, island and neighbourhood. Dineri gives them one platform to manage everything without the commission, the complexity or the compromises."
       />
 
       {/* Mission */}

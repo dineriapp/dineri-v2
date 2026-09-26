@@ -60,7 +60,7 @@ const QrVisual = () => {
         ))}
       </div>
       <div className="text-right font-jetbrains-mono text-[10px]">
-        <div className="text-muted-foreground">Table 14</div>
+        <div className="text-muted-foreground">Tonight's specials</div>
         <div className="text-white">412 scans</div>
       </div>
     </div>
@@ -96,11 +96,11 @@ const ReviewsVisual = () => (
         <Star key={i} className="h-3 w-3 fill-white text-white" />
       ))}
       <span className="ml-1 font-jetbrains-mono text-[10px] text-muted-foreground">
-        4.9 · 1,284 reviews
+        4.9 · 1,847 reviews
       </span>
     </div>
     <p className="mt-2 text-[11px] italic text-muted-foreground">
-      &quot;Best ragù in Brera. The QR menu in English was a delight.&quot;
+      &quot;Came for the seafood, stayed for the view. Best meal of our trip to Ibiza.&quot;
     </p>
   </div>
 );
@@ -183,28 +183,28 @@ export const FeatureGrid = () => {
               num: "03",
               iconKey: "qr",
               title: "QR Code",
-              desc: "Generate per-table QR codes that open your menu instantly. Track scans by seat.",
+              desc: "Create a QR code in seconds. Link in to your menu, reservations or any page you want. Track every scan.",
               visualKey: "qr",
             },
             {
               num: "04",
               iconKey: "analytics",
               title: "Analytics",
-              desc: "Know what guests view, scan, click and book. Cohort by source - Instagram vs Google vs table QR.",
+              desc: "Stop guessing. Know exactly what your guest do. What they view, what they click, and where they come from.",
               visualKey: "bars",
             },
             {
               num: "05",
               iconKey: "star",
               title: "Reviews",
-              desc: "Aggregate Google, Tripadvisor and TheFork reviews. Auto-reply with AI in your tone.",
+              desc: "Let your reputation do the selling. Your Google rating and review count, displayed automatically on your Dineri page.",
               visualKey: "reviews",
             },
             {
               num: "06",
               iconKey: "globe",
               title: "Food ordering",
-              desc: "Take orders straight from the menu and get paid through your own Stripe account. Track every order to the door.",
+              desc: "Delivery platforms take up to 30% of every order. Dineri takes zero. Accept takeaway and delivery orders directly. You keep 100% of every sale.",
               visualKey: "orderflow",
             },
           ].map((item, idx) => {
