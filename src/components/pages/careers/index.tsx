@@ -6,85 +6,59 @@ import { PillButton } from "@/components/ui/ui-kit/PillButton";
 const values = [
   {
     icon: Rocket,
-    title: "Ship daily",
-    desc: "We deploy to production every day. Small bets, fast loops, real customer feedback.",
+    title: "Restaurants first",
+    desc: "Every decision starts with one question: does this help a restaurant fill more tables or save more time? If not, it doesn't ship.",
   },
   {
     icon: HeartHandshake,
-    title: "Restaurants first",
-    desc: "Every decision is judged against one question: does it help a venue earn or save more?",
+    title: "Build and learn",
+    desc: "We move fast, test with real restaurants and improve based on what we see. Small bets, fast loops, real feedback.",
   },
   {
     icon: Globe,
-    title: "Remote, async",
-    desc: "Hubs in Milan and Lisbon, teammates across 9 countries. Default to writing.",
+    title: "Craft over scale",
+    desc: "We'd rather ship one beautiful, well-considered feature then ten mediocre ones. Quality is not optional.",
   },
   {
     icon: Sparkles,
-    title: "Craft over scale",
-    desc: "We'd rather ship one beautiful surface than ten mediocre ones. Taste is a requirement.",
+    title: "Ownership over hierarchy",
+    desc: "Everyone owns their work. No waiting for permission, no passing the buck. If you see something that can be better, just fix it",
   },
 ];
 
 const perks = [
-  "Equity in every offer",
+  "Remote-friendly & work from anywhere",
   "Visit-a-restaurant budget (no, really)",
-  "M2 / M3 MacBook Pro + 4K display",
-  "30 days PTO + local public holidays",
-  "Annual team offsite (last one: Sicily)",
-  "Learning budget - €1,500/yr",
-  "Health & dental in EU + UK",
-  "Home-office stipend on day one",
+  "Learning budget",
+  "Flexible hours",
+  "Real ownership, build from day one",
+  "Join early, and shape the product",
 ];
 
 const openings = [
   {
-    team: "Marketing",
-    role: "Growth Marketer",
-    desc: "You own the Dineri brand. From social campaigns to content strategy, you're the reason restaurants choose us.",
-    location: "Remote",
-    type: "Part Time",
-    comp: "Reflecting experience & skills",
-  },
-  {
-    team: "Manager",
-    role: "Customer Manager",
-    desc: "You're the person our restaurants rely on. You guide them, support them and make sure they get the most out of Dineri.",
-    location: "Remote",
-    type: "Part Time",
-    comp: "Reflecting experience & skills",
-  },
-  {
     team: "Engineering",
-    role: "Full-stack Engineer",
-    desc: "You ship the product. From backend APIs to polished UI, you build the surfaces restaurants use every day.",
+    role: "Full-stack Developer",
+    desc: "You build the product. From backend APIs to polished UI, you build the paltform that restaurants use every day.",
     location: "Remote",
-    type: "Part Time",
-    comp: "Reflecting experience & skills",
-  },
-  {
-    team: "Design",
-    role: "Product Designer",
-    desc: "You shape how Dineri feels. You design flows that restaurants love and guests find intuitive on their first visit.",
-    location: "Remote",
-    type: "Part Time",
-    comp: "Reflecting experience & skills",
+    type: "Flexible hours",
+    comp: "Freelance",
   },
   {
     team: "Content",
     role: "Content Creator",
-    desc: "You tell our story. Short-form video, photography and copy that show restaurants what's possible with Dineri.",
+    desc: "You tell our story. Short-form video, photography and copy that show restaurant what's possible with Dineri.",
     location: "Remote",
-    type: "Part Time",
-    comp: "Reflecting experience & skills",
+    type: "Flexible hours",
+    comp: "Freelance",
   },
   {
-    team: "Sales",
-    role: "Sales Representative",
-    desc: "You bring new restaurants on board. You listen, demo, and turn interested venues into long-term partners.",
+    team: "Account Manager",
+    role: "Sales",
+    desc: "You bring new restaurants on board. You listen, demo and turn interesed restaurants into long-term partners.",
     location: "Remote",
-    type: "Part Time",
-    comp: "Reflecting experience & skills",
+    type: "Flexible hours",
+    comp: "Native spanish speaker",
   },
 ];
 
@@ -95,8 +69,8 @@ const CareersPage = () => {
         number="07"
         label="Company · Careers"
         richClassName="max-w-4xl"
-        headline={[{ plain: "Build what " }, { lime: "restaurants " }, { plain: "rely on." }]}
-        description="We're a small, opinionated team building the bio-link operating system for restaurants. Remote-first across the EU, hubs in Milan and Lisbon."
+        headline={[{ plain: "Small team. " }, { lime: "Big " }, { plain: "mission." }]}
+        description="We're a small, ambitious team based in Rotterdam building the quiet infrastructure behind full tables. Remote-frienly, moving fast and always looking for people who care about the work."
       />
 
       {/* Values */}
@@ -106,7 +80,7 @@ const CareersPage = () => {
             /01 - How we work
           </div>
           <h2 className="font-inter-tight mt-4 max-w-3xl text-3xl font-semibold tracking-tight sm:text-4xl">
-            Four operating principles. Hundreds of small decisions a week.
+            Four principles. Every decision
           </h2>
 
           <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -137,11 +111,12 @@ const CareersPage = () => {
                 /02 - Perks & benefits
               </div>
               <h2 className="font-inter-tight mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">
-                The boring stuff, done right.
+                Small team. Real impaect.
               </h2>
               <p className="mt-4 max-w-md text-sm text-muted-foreground">
-                We believe great work needs great tools, time off and trust. Here&apos;s what every
-                teammate gets - from day one.
+                We're a lean team building something we guinely believe in. Fast decisions, real
+                ownership and a. product that makes a difference for independent restaurants every
+                single day.
               </p>
             </div>
             <ul className="grid gap-px overflow-hidden rounded-2xl border border-white/5 bg-white/4 sm:grid-cols-2">
@@ -219,15 +194,15 @@ const CareersPage = () => {
               Don&apos;t see your role
             </div>
             <h3 className="font-inter-tight mt-3 text-2xl font-semibold sm:text-3xl">
-              Pitch us anyway.
+              Don't see your role?
             </h3>
             <p className="mt-2 max-w-xl text-sm text-muted-foreground">
-              If you&apos;d be a 10x hire for Dineri and we don&apos;t have a posting, write to us.
-              We hire exceptional people ahead of need.
+              If you think you'de be a great fit for Dineri, we'd love to hear from you. Write us
+              and tell us why.
             </p>
             <div className="mt-6">
-              <a href="mailto:careers@dineri.app">
-                <PillButton size="md">Email careers@dineri.app →</PillButton>
+              <a href="mailto:julian@dineri.app">
+                <PillButton size="md">Mail to julian@dineri.app →</PillButton>
               </a>
             </div>
           </div>
