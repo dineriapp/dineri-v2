@@ -80,7 +80,7 @@ const CareersPage = () => {
             /01 - How we work
           </div>
           <h2 className="font-inter-tight mt-4 max-w-3xl text-3xl font-semibold tracking-tight sm:text-4xl">
-            Four principles. Every decision
+            Four principles. Every decision.
           </h2>
 
           <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
