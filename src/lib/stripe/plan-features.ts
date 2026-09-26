@@ -93,47 +93,42 @@ export const PLAN_COMPARISON: CompareSection[] = [
   {
     section: "Profile & Links",
     rows: [
-      row("Public Venue Page & Bio Link", () => true),
       row("Links", (l) => limitCell(l.links)),
-      row("Menu Categories", (l) => limitCell(l.menu)),
-      row("Items Per category", (l) => limitCell(l.items_per_category)),
+      row("Menu categories", (l) => limitCell(l.menu)),
+      row("Items per category", (l) => limitCell(l.items_per_category)),
       row("Gallery", (l) => limitCell(l.gallery)),
       row("FAQ", (l) => limitCell(l.faq)),
       row("Events", (l) => limitCell(l.events)),
       row("Popups", (l) => limitCell(l.popups)),
-      row("Success Stories", (l) => l.success_story),
-      row("Appearance Editor", (l) => l.appearance),
+      row("Success stories", (l) => l.success_story),
+      row("Appearance studio", (l) => l.appearance),
     ],
   },
   {
     section: "Visibility",
-    rows: [
-      row("Mobile-Ready", (l) => l.mobileReady),
-      row("Reviews", (l) => l.reviews),
-      row("Custom Domain", (l) => l.customDomain),
-    ],
+    rows: [row("Mobile-ready", (l) => l.mobileReady), row("Custom domain", (l) => l.customDomain)],
   },
   {
     section: "Orders & Reservations",
     rows: [
-      row("Order System", (l) => l.orderSystem),
+      row("Order system", (l) => l.orderSystem),
       row("Reservations", (l) => l.reservations),
-      row("0% Commission", (l) => l.zeroCommission),
+      row("Confirmations & Reminders via email", (l) => l.zeroCommission),
     ],
   },
   {
     section: "QR & Analytics",
     rows: [
       row("QR codes", (l) => limitCell(l.qrCodes)),
-      row("Analytics History", (_l, p) => retentionLabel(p)),
-      row("Cross-Venue Reporting", (l) => l.crossVenueRapportage),
+      row("Analytics history", (_l, p) => retentionLabel(p)),
+      row("Cross-venue reporting", (l) => l.crossVenueRapportage),
     ],
   },
   {
     section: "Email Notifications",
     rows: [
-      row("Automatic Notifications", (l) => l.automaticEmail),
-      row("White Label Email Customization", (l) => l.whiteLabelEmail),
+      row("Automatic notifications", (l) => l.automaticEmail),
+      row("White label email customization", (l) => l.whiteLabelEmail),
     ],
   },
   {
@@ -141,10 +136,9 @@ export const PLAN_COMPARISON: CompareSection[] = [
     rows: [
       row("Venues", (l) => limitCell(l.venues)),
       row("Support", (l) => SUPPORT_LABEL[l.supportChannel]),
-      row("SSO + Role-based Access", (l) => l.ssoRoleBased),
-      row("White Label Branding", (l) => l.whiteLabelBranding),
+      row("White label branding", (l) => l.whiteLabelBranding),
       row("Installation & Onboarding", (l) => l.installationOnboarding),
-      row("Account Manager", (l) => l.accountManager),
+      row("Account manager", (l) => l.accountManager),
     ],
   },
   {
@@ -152,9 +146,17 @@ export const PLAN_COMPARISON: CompareSection[] = [
     rows: [
       row("Google Business - Sync Reviews & Opening Hours", (l) => l.googleBusiness),
       row("Google Sheets - Export Reservations & Orders", (l) => l.googleSheets),
-      row("Meta Pixel - Track Facebook & Instagram Ads", (l) => l.metaPixel),
-      row("Lightspeed POS", (l) => l.lightspeed),
-      row("Deliverect", (l) => l.deliverect),
+    ],
+  },
+  {
+    section: "Comming soon",
+    rows: [
+      row(
+        "Campaign Manager - Set up and manage your own Meta advertisements",
+        (l) => l.googleBusiness,
+      ),
+      row("Guest Profiles & Loyalty program", (l) => l.googleSheets),
+      row("POS intergration", (l) => l.googleSheets),
     ],
   },
 ];

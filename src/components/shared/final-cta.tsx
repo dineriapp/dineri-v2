@@ -10,7 +10,7 @@ export const FinalCTA = () => {
     headline: [{ plain: "Your restaurant, " }, { lime: "can be live " }, { plain: "by tonight." }],
     description:
       "Set up your Dineri page in 10 minutes. We handle everything. You focus on your guests.",
-    cta: { label: "Start your free month", href: "/start" },
+    cta: { label: "Start your free month →", href: "/start" },
     microcopy: "No credit card · No commission · Cancel anytime",
   };
 

@@ -17,8 +17,8 @@ const iconMap = {
 const AvailabilityVisual = () => (
   <div className="flex items-center justify-between rounded-3xl bg-foreground/6 px-3 py-2 font-jetbrains-mono text-[11px]">
     <span className="text-muted-foreground">
-      TAGLIATELLE AL RAGÙ
-      <span className="ml-2 text-foreground">€18 · 2 allergens · 3 add-ons</span>
+      Updated just now
+      <span className="ml-2 text-foreground">TAGLIATELLE AL RAGÙ → €18 → €22</span>
     </span>
     <span className="ml-3 text-white">Live</span>
   </div>
@@ -106,7 +106,7 @@ const ReviewsVisual = () => (
 );
 
 const OrderFlowVisual = () => {
-  const codes = ["NEW", "PREPARING", "READY", "DELIVERED"];
+  const codes = ["NEW ORDER", "TAKEAWAY", "Margherita", "Total €10", "Comission €0"];
   const active = "PREPARING";
   return (
     <div className="flex flex-wrap gap-1.5">

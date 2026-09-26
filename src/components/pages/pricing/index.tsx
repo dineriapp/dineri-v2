@@ -206,7 +206,7 @@ const PricingPage = () => {
               /COMPARE PLANS
             </div>
             <h2 className="font-inter-tight mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
-              Every feature, side by side.
+              What's included in each plan
             </h2>
           </div>
 
