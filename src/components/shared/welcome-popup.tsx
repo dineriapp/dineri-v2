@@ -58,12 +58,16 @@ export const WelcomePopup = () => {
             className="font-inter-tight mt-4 text-2xl font-semibold leading-[1.1] tracking-tight sm:text-[26px]"
           >
             <RichHeadline
-              tokens={[{ plain: "Welcome to " }, { lime: "Dineri" }, { plain: " 👋" }]}
+              tokens={[
+                { plain: "Your guests don't " },
+                { lime: "care" },
+                { plain: " about your fancy website.." },
+              ]}
             />
           </h2>
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-            One link for your restaurant - menu, reservations, reviews and analytics in under 4
-            minutes. Zero commission, forever-free to start.
+            All they want to know is: what's on the menu, where are you, are you open and can they
+            book a table. Dineri answers all four instantly.
           </p>
 
           <div className="mt-5 flex flex-col gap-2 sm:flex-row">
