@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-
 import { routeRequest, type HostRouterConfig } from "./lib/host-router";
 import { consume } from "./lib/rate-limit/core";
 
