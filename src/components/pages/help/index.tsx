@@ -321,10 +321,10 @@ const HelpPage = () => {
 
             {/* SUPPORT ------------------------------------------------ */}
             <article id="support" className="scroll-mt-24">
-              <SectionHeading id="support" number="13" label="Contact · Support" title="Get help" />
+              <SectionHeading id="support" number="13" label="Support" title="Get help" />
               <p className="max-w-2xl text-[15px] leading-relaxed text-muted-foreground sm:text-base">
-                Can&apos;t find what you&apos;re looking for? Our team usually replies within 2
-                hours on business days.
+                Can't find what you're looking for? Reach out and we'll get back to you as soon as
+                possible.
               </p>
 
               <div className="mt-8 grid gap-3 sm:grid-cols-2">
@@ -333,10 +333,11 @@ const HelpPage = () => {
                     <LifeBuoy className="h-4 w-4" />
                   </div>
                   <h3 className="font-inter-tight mt-5 text-base font-semibold tracking-tight">
-                    Email support
+                    Already a Dineri customer?
                   </h3>
                   <p className="mt-2 text-sm text-muted-foreground">
-                    Reach us directly - we reply within 2 hours on business days.
+                    Log in to your dashboard and reach us directly via the in-app support for the
+                    fastest response. No acces? You can send us an email as well.
                   </p>
                   <Link
                     href="mailto:info@dineri.app"
@@ -355,8 +356,8 @@ const HelpPage = () => {
                     Submit a request
                   </h3>
                   <p className="mt-2 text-sm text-muted-foreground">
-                    Technical issue, billing question, account problem or feature request - we route
-                    it to the right team.
+                    Technical issue, billing question or feature request? Let us know and we'll take
+                    care of it.
                   </p>
                   <div className="mt-5">
                     <SupportTicketDialog />

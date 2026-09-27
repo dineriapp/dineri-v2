@@ -15,15 +15,15 @@ const categories = [
     items: [
       {
         q: "How long does it take to set up Dineri?",
-        a: "Most venues are live in a single sitting. Create your venue, build your menu, choose a theme, and your link is ready to share - no website, developer or design work required.",
+        a: "Most restaurants are live within 10 minutes. Add your details, upload your menu and your Dineri page is ready for guests. No developer needed, no waiting around.",
       },
       {
         q: "Do I need a credit card to start?",
-        a: "No. The Starter plan is free forever and requires no payment details. You only add a card if you choose to upgrade to Growth or Scale.",
+        a: "No. Your first month is completely free and no credit card is required. When your trial ends, you can pay with a credit card or a wide range of local payment methods. All payments are processed securely by Stripe..",
       },
       {
-        q: "How do I add my menu?",
-        a: "You build it in the dashboard. Create your categories, then add each dish with a description, price, photo, allergen tags and any add-ons. Everything you change appears on your live page straight away.",
+        q: "Do I need technical skills to use Dineri?",
+        a: "Not at all. Dineri was built together with restaurant owners and their teams, so everything is designed to be simple and self-explanatory. No technical knowledge needed. Like anything new, it takes a moment to get familiar. But most restaurant owners are live within 10 minutes. If you can use Instagram, you can use Dineri.",
       },
     ],
   },
@@ -32,52 +32,52 @@ const categories = [
     label: "Plans & billing",
     items: [
       {
-        q: "Which plans are available?",
-        a: "Three. Starter is free forever and covers a single venue. Growth adds reservations, online orders, QR codes and extended analytics. Scale supports up to five venues. The full comparison is on our pricing page.",
+        q: "What does Dineri cost?",
+        a: "Dineri starts at €129 per month. Your first month is completely free, no credit card required. And if it's not the right fit, just cancel. No questions asked. For a full breakdown of what's included, visit our pricing page.",
       },
       {
-        q: "How do payments work?",
-        a: "Subscriptions are billed securely through Stripe, which accepts all major credit and debit cards. There is no setup fee - the price you see is the price you pay.",
+        q: "Can I switch between monthly and annual?",
+        a: "Switching from monthly to annual is easy and you'll always get 2 months free when you do. Switching from annual back to monthly is not possible mid-term. We understand that circumstances can change, so if you find yourself in that situation, reach out to us via the help desk and we'll see what we can do.",
       },
       {
-        q: "Can I switch between monthly and annual billing?",
-        a: "Yes, at any time from your billing settings. Annual billing is discounted; the exact saving for each plan is shown on the pricing page.",
+        q: "Is there a setup fee?",
+        a: "No setup fee. Once you become a Dineri customer through a demo request and an onboarding call with us, we set everything up for you completely free. Your entire page is built around your restaurant. Your colors, your menu, your details. Ready to use from day one.",
       },
     ],
   },
   {
     key: "reservations",
-    label: "Reservations & orders",
+    label: "Reservations",
     items: [
       {
-        q: "Do you charge commission on bookings or orders?",
-        a: "Never. Dineri takes no commission on reservations or orders. You pay a flat monthly fee for your venue - never a percentage, and never per cover.",
+        q: "Do you charge commission on bookings?",
+        a: "Never. Dineri charges a flat monthly or annual subscription. Every reservation, every order, every euro stays with you. We don't take a cut. Ever.",
       },
       {
-        q: "Can I take deposits to reduce no-shows?",
-        a: "Yes. Connect your own Stripe account and require a deposit or full prepayment when a guest books. Funds settle directly to your account - Dineri never holds your money.",
+        q: "Can I take deposits to prevent no-shows?",
+        a: "Yes. Dineri offers built-in no-show protection. You can choose to require a deposit at the time of booking and credited to the guest's bill when they arrive. If a guest doesn't show up, the deposit is automatically charged. No manual work, no awkward conversations. Guests show up or you get paid.",
       },
       {
-        q: "How do I manage bookings day to day?",
-        a: "Your dashboard includes a service timeline, table assignment and status tracking, with confirmation emails sent to guests automatically.",
+        q: "Does it integrate with my POS?",
+        a: "POS integrations are currently in development. Once live, they will be included in your existing plan at no extra cost. Want to be the first to know when they go live? Get in touch and we'll keep you updated",
       },
     ],
   },
   {
     key: "menu",
-    label: "Menu & QR codes",
+    label: "Orders",
     items: [
       {
-        q: "Which languages is Dineri available in?",
-        a: "The Dineri interface is available in six languages - English, German, French, Dutch, Italian and Spanish. Your menu is published in the languages you enter it in; automatic menu translation is on our roadmap.",
+        q: "Do you charge commission on orders?",
+        a: "Never. Dineri charges a flat monthly or annual subscription. Every order, every euro goes straight to your bank account. No commission, no hidden fees, no middleman. Ever.",
       },
       {
-        q: "Can I create QR codes for my tables?",
-        a: "Yes. Generate QR codes that open your menu directly, download them as PNG for print or SVG for any size, and see how often they are scanned in your analytics.",
+        q: "Can I pause or disable ordering temporarily?",
+        a: "Yes. Pause or disable ordering anytime directly from your dashboard. Whether it's a closing day, a holiday or the kitchen just needs a moment to catch up. One click to pause, one click to resume.",
       },
       {
-        q: "How do I handle allergens, add-ons and sold-out dishes?",
-        a: "Every dish supports allergen and dietary tags, add-ons and variants. Mark an item unavailable and it updates on your live menu immediately.",
+        q: "How do I receive and manage incoming orders?",
+        a: "Every order comes straight into your Dineri dashboard. You receive an instant notification, see the full order details and can manage everything from one place. No third-party platform, no extra app needed.",
       },
     ],
   },
@@ -87,15 +87,15 @@ const categories = [
     items: [
       {
         q: "Is Dineri GDPR compliant?",
-        a: "Yes. We collect only the guest data a booking or order requires, and a Data Processing Agreement is available to every customer on request.",
+        a: "Yes. Dineri is fully GDPR compliant. Your data and your customers' data is stored securely within the European Union. We never sell or share data with third parties. For full details, see our privacy policy.",
       },
       {
-        q: "Who owns my menu and guest data?",
-        a: "You do, always. Your content and your guest records remain yours, and we never sell them or share them with third parties for marketing.",
+        q: "Who owns my data and my customers data?",
+        a: "You do. Always. Your menu, your reservations, your customer data. It's yours. Dineri processes it on your behalf but never owns it, sells it or uses it for any other purpose. You can export or delete your data at any time. When you cancel your account, we delete everything within 30 days.",
       },
       {
-        q: "Can I delete my account and data?",
-        a: "Yes. Contact our support team and we will permanently delete your account and all associated data.",
+        q: "Can I delete my account?",
+        a: "Yes. To delete your account, please reach out to our helpdesk. All your data, including your menu, reservations and customer data, will be permanently deleted within 30 days.",
       },
     ],
   },
@@ -107,7 +107,7 @@ const FaqPage = () => {
       <PageHeader
         number="06"
         label="Help · FAQ"
-        headline={[{ plain: "Questions, " }, { lime: "answered." }]}
+        headline={[{ plain: "Good " }, { lime: "question" }]}
         description="Answers to the questions restaurant owners ask most often before getting started. If we haven't covered what you need, our team is happy to help."
       />
       <section className="relative">
@@ -193,24 +193,23 @@ const FaqPage = () => {
               {/* Still have questions */}
               <div className="rounded-2xl border border-white/10 bg-linear-to-br from-surface-2 to-surface-1 p-8 sm:p-10">
                 <div className="font-jetbrains-mono text-[10px] uppercase tracking-[0.18em] text-lime">
-                  Still stuck
+                  Support
                 </div>
                 <h3 className="font-inter-tight mt-3 text-2xl font-semibold sm:text-3xl">
-                  Talk to a human.
+                  Still have questions?
                 </h3>
                 <p className="mt-2 max-w-xl text-sm text-muted-foreground">
-                  Our support team replies in under 2 hours during business days, in 7 languages.
+                  Our support team replies within 1 business day. Reach out via the helpdesk and
+                  we'll get back to you as soon as possible.
                 </p>
                 <div className="mt-6 flex flex-wrap items-center gap-3">
                   <Link href="/help">
-                    <PillButton size="md">Open Help Center →</PillButton>
+                    <PillButton size="md">Help Center →</PillButton>
                   </Link>
                   <a
                     href="mailto:info@dineri.app"
                     className="text-sm text-muted-foreground hover:text-foreground"
-                  >
-                    info@dineri.app
-                  </a>
+                  ></a>
                 </div>
               </div>
             </div>

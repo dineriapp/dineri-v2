@@ -12,17 +12,17 @@ const perks = [
   {
     icon: Clock,
     title: "30-minute walkthrough",
-    desc: "A senior product specialist tailors the demo to your venue type.",
+    desc: "We walk you through everything Dineri has to offer, tailored to your restaurant and your guests.",
   },
   {
     icon: Headset,
-    title: "Real setup, not slides",
-    desc: "We build your menu live so you see your own restaurant.",
+    title: "Your restaurant, live",
+    desc: "We set up a demo page for your restaurant, so you can see exactly how it looks for you and your guests.",
   },
   {
     icon: ShieldCheck,
     title: "No commitment",
-    desc: "No card, no contract. Walk away with a working profile either way.",
+    desc: "No rush. We might be a perfect fit  or we might not. Let's find out together.",
   },
 ];
 
@@ -85,8 +85,8 @@ const DemoPage = () => {
       <PageHeader
         number="03"
         label="Book a demo"
-        headline={[{ plain: "Request your free demo " }, { white: "and get started today." }]}
-        description="See how our platform can help your restaurant grow. Fill out the form below and we'll be in touch to schedule your personalized demo."
+        headline={[{ plain: "See your restaurant  " }, { white: "live on Dineri" }]}
+        description="Fill in your details and we'll reach out to schedule a personal demo. No slides, no scripts. Just your restaurant."
       />
       <section className="relative">
         <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-[1fr_1.2fr] lg:gap-16 lg:px-8 lg:py-28">
@@ -97,7 +97,7 @@ const DemoPage = () => {
                 /WHAT TO EXPECT
               </div>
               <h2 className="font-inter-tight mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
-                A demo built around your venue.
+                What happens next?
               </h2>
             </div>
             <ul className="space-y-5">
@@ -124,10 +124,10 @@ const DemoPage = () => {
 
             <div className="rounded-2xl border border-white/5 bg-linear-to-br from-white/10 to-transparent p-6">
               <div className="font-jetbrains-mono uppercase tracking-[0.12rem] text-[11px] text-white">
-                /TRUSTED BY
+                /OUR PROMISE
               </div>
               <p className="mt-2 font-inter-tight text-2xl font-semibold tracking-tight">
-                Independent restaurants across Europe.
+                Sometimes it's just not a match. No hard feelings, cancel anytime.
               </p>
             </div>
           </aside>
@@ -147,7 +147,8 @@ const DemoPage = () => {
                   Tell us about your restaurant
                 </h3>
                 <p className="mt-2 text-sm text-muted-foreground">
-                  Fill in your business details and we&apos;ll contact you by phone or email.
+                  Fill in your business detauks and we'll reach out withing 1 business day to
+                  schedule a personal demo. No slides, no scripts. Just your live restaurant.
                 </p>
               </div>
 
@@ -167,7 +168,7 @@ const DemoPage = () => {
                       label="Business Name"
                       name="business"
                       required
-                      placeholder="Trattoria Milano"
+                      placeholder="Dineri Milano"
                       error={errors.business}
                     />
                     <Field
@@ -192,7 +193,7 @@ const DemoPage = () => {
                       type="tel"
                       required
                       numeric
-                      placeholder="390212345678"
+                      placeholder="39123456789"
                       error={errors.phone}
                     />
                     <Field

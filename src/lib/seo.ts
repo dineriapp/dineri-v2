@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const SITE_NAME = "Dineri";
 
-export const SITE_TAGLINE = "One link for your restaurant";
+export const SITE_TAGLINE = "The quiet infrastructure behind full tables";
 
 export const SITE_DESCRIPTION =
   "Menu, reservations, reviews, social and analytics - one bio link for your venue. Zero commission.";

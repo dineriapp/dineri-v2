@@ -12,7 +12,7 @@ const SOCIALS = [
 export const Footer = () => {
   const f = {
     brand: "dineri.app",
-    tagline: "The operating system for your restaurant bio link. Built in Milan. Used worldwide.",
+    tagline: "The quiet infrastructure behind full tables.",
     columns: [
       {
         title: "Product",
@@ -46,8 +46,8 @@ export const Footer = () => {
         ],
       },
     ],
-    copyright: "© 2026 Dineri Inc.",
-    version: "v3.0.4 - all systems operational",
+    copyright: "© 2026 Dineri",
+    version: "Built for independent restaurants. Used worldwide.",
   };
 
   return (

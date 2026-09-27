@@ -11,7 +11,6 @@ const HomePage = () => {
   return (
     <>
       <Hero />
-      <LogoStrip />
       <FeatureGrid />
       <Comparison />
       <Stats />

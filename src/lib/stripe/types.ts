@@ -40,4 +40,4 @@ export type StripeConfig = {
     configured: boolean,
     secret_configured: boolean,
     webhook_configured: boolean,
-};
+}; 

@@ -17,8 +17,8 @@ const iconMap = {
 const AvailabilityVisual = () => (
   <div className="flex items-center justify-between rounded-3xl bg-foreground/6 px-3 py-2 font-jetbrains-mono text-[11px]">
     <span className="text-muted-foreground">
-      TAGLIATELLE AL RAGÙ
-      <span className="ml-2 text-foreground">€18 · 2 allergens · 3 add-ons</span>
+      Updated just now
+      <span className="ml-2 text-foreground">TAGLIATELLE AL RAGÙ → €18 → €22</span>
     </span>
     <span className="ml-3 text-white">Live</span>
   </div>
@@ -60,7 +60,7 @@ const QrVisual = () => {
         ))}
       </div>
       <div className="text-right font-jetbrains-mono text-[10px]">
-        <div className="text-muted-foreground">Table 14</div>
+        <div className="text-muted-foreground">Tonight's specials</div>
         <div className="text-white">412 scans</div>
       </div>
     </div>
@@ -96,17 +96,17 @@ const ReviewsVisual = () => (
         <Star key={i} className="h-3 w-3 fill-white text-white" />
       ))}
       <span className="ml-1 font-jetbrains-mono text-[10px] text-muted-foreground">
-        4.9 · 1,284 reviews
+        4.9 · 1,847 reviews
       </span>
     </div>
     <p className="mt-2 text-[11px] italic text-muted-foreground">
-      &quot;Best ragù in Brera. The QR menu in English was a delight.&quot;
+      &quot;Came for the seafood, stayed for the view. Best meal of our trip to Ibiza.&quot;
     </p>
   </div>
 );
 
 const OrderFlowVisual = () => {
-  const codes = ["NEW", "PREPARING", "READY", "DELIVERED"];
+  const codes = ["NEW ORDER", "TAKEAWAY", "Margherita", "Total €10", "Comission €0"];
   const active = "PREPARING";
   return (
     <div className="flex flex-wrap gap-1.5">
@@ -149,16 +149,17 @@ export const FeatureGrid = () => {
             <h2 className="font-inter-tight mt-5 text-balance text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-[56px]">
               <RichHeadline
                 tokens={[
-                  { plain: "One link. Every " },
-                  { white: "conversion surface " },
-                  { plain: "your restaurant needs." },
+                  { plain: "Your guests " },
+                  { white: "don't care about " },
+                  { plain: "your website" },
                 ]}
               />
             </h2>
           </div>
           <p className="text-base leading-relaxed text-muted-foreground">
-            Built around the actions guests already take - viewing the menu, booking, reviewing,
-            scanning a QR - and instrumented end to end.
+            Expensive and complex restaurant websites are a thing of the past. Your guests don't
+            need them. All they want to know is: what's on the menu, where are you, are you open and
+            can they book a table.
           </p>
         </div>
 
@@ -167,43 +168,43 @@ export const FeatureGrid = () => {
             {
               num: "01",
               iconKey: "menu",
-              title: "Smart Menu",
-              desc: "Drag-and-drop builder with allergens, modifiers and live availability. Mark a dish sold out and your menu updates instantly.",
+              title: "Menu",
+              desc: "Update your menu yourself. Change dishes, prices and photos in seconds, from your phone, anywhere. No technical skills needed",
               visualKey: "availability",
             },
             {
               num: "02",
               iconKey: "calendar",
               title: "Reservations",
-              desc: "Direct bookings without commission. Table mapping, deposits, waitlist and SMS reminders included.",
+              desc: "Every missed call is a missed table. Every no-show is money gone. Dineri fixes both. Zero comossion, guests show up or you get paid",
               visualKey: "timeslots",
             },
             {
               num: "03",
               iconKey: "qr",
-              title: "Table QR",
-              desc: "Generate per-table QR codes that open your menu instantly. Track scans by seat.",
+              title: "QR Code",
+              desc: "Create a QR code in seconds. Link in to your menu, reservations or any page you want. Track every scan.",
               visualKey: "qr",
             },
             {
               num: "04",
               iconKey: "analytics",
               title: "Analytics",
-              desc: "Know what guests view, scan, click and book. Cohort by source - Instagram vs Google vs table QR.",
+              desc: "Stop guessing. Know exactly what your guest do. What they view, what they click, and where they come from.",
               visualKey: "bars",
             },
             {
               num: "05",
               iconKey: "star",
-              title: "Reviews Hub",
-              desc: "Aggregate Google, Tripadvisor and TheFork reviews. Auto-reply with AI in your tone.",
+              title: "Reviews",
+              desc: "Let your reputation do the selling. Your Google rating and review count, displayed automatically on your Dineri page.",
               visualKey: "reviews",
             },
             {
               num: "06",
               iconKey: "globe",
-              title: "Online Orders",
-              desc: "Take orders straight from the menu and get paid through your own Stripe account. Track every order to the door.",
+              title: "Food ordering",
+              desc: "Delivery platforms take up to 30% of every order. Dineri takes zero. Accept takeaway and delivery orders directly. You keep 100% of every sale.",
               visualKey: "orderflow",
             },
           ].map((item, idx) => {
