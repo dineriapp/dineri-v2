@@ -25,7 +25,7 @@ export const PLAN_TAGLINE: Record<PlanName, string> = {
 };
 
 export const PLAN_PERIOD: Record<PlanName, string> = {
-  starter: "Free",
+  starter: "/ Free",
   growth: "/ month",
   scale: "/ month",
 };
@@ -41,30 +41,24 @@ export function planHeadlineFeatures(plan: PlanName): string[] {
   const venues = l.venues === "unlimited" ? "Unlimited venues" : `${l.venues} venue`;
 
   if (plan === "starter") {
-    return [
-      `${venues}, ${formatLimit(l.links)} links`,
-      `Menu with ${formatLimit(l.menu)} categories, ${formatLimit(l.items_per_category)} items each`,
-      `${formatLimit(l.qrCodes)} QR codes`,
-      `${retentionLabel(plan)} of analytics`,
-      `${SUPPORT_LABEL[l.supportChannel]} support`,
-    ];
+    return ["Links", "Gallery", "FAQ & Events", "QR-codes", "Customize your own Dineri page"];
   }
 
   if (plan === "growth") {
     return [
-      "Online ordering & table reservations",
-      "0% commission on every order",
-      `${formatLimit(l.links)} links · ${formatLimit(l.menu)} menu categories · unlimited FAQ`,
-      `${formatLimit(l.qrCodes)} QR codes · ${retentionLabel(plan)} of analytics`,
-      `${SUPPORT_LABEL[l.supportChannel]} support`,
+      "Table reservation system",
+      "Food orders",
+      "No-show protection with deposit",
+      "Automatic email confirmations ",
+      "Beautiful & Mobile-ready Dineri page",
     ];
   }
 
   return [
-    "Unlimited venues, links, menu & events",
+    "Everything in growth",
     `${retentionLabel(plan)} of analytics`,
-    "White-label email & branding",
-    "SSO + role-based access",
+    "White-label & full branding control",
+    "Multiple venues",
     `${SUPPORT_LABEL[l.supportChannel]} support & account manager`,
   ];
 }
