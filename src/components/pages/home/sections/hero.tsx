@@ -14,7 +14,7 @@ const COPY = {
     emphasis: "tables",
   },
   subhead:
-    "No-shows, missed reservations and outdated websites are costing you money everv day. Dineri  fixes that. One platform, zero commission, full tables.",
+    "No-shows, missed reservations and outdated websites are costing you money every day. Dineri  fixes that. One platform, zero commission, full tables.",
   ctaPrimary: "Start free",
   ctaSecondary: "Watch a quick demo",
   badges: ["Live in 10 mintes", "First month free", "No credit card required"],

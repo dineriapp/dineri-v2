@@ -149,17 +149,17 @@ export const FeatureGrid = () => {
             <h2 className="font-inter-tight mt-5 text-balance text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-[56px]">
               <RichHeadline
                 tokens={[
-                  { plain: "One link. Everything " },
-                  { white: "your restaurant " },
-                  { plain: "needs." },
+                  { plain: "Your guests " },
+                  { white: "don't care about " },
+                  { plain: "your website" },
                 ]}
               />
             </h2>
           </div>
           <p className="text-base leading-relaxed text-muted-foreground">
-            From the moment a guest discovers your restaurant to the moment they leave. Dineri
-            manages everything in between. Reservations, host management, food ordering and your
-            public page. All connected. Zero commission.
+            Expensive and complex restaurant websites are a thing of the past. Your guests don't
+            need them. All they want to know is: what's on the menu, where are you, are you open and
+            can they book a table.
           </p>
         </div>
 
