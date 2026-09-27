@@ -31,7 +31,7 @@ function contentSecurityPolicy(): string {
     `img-src ${imageSources.join(" ")}`,
     "font-src 'self'",
     "style-src 'self' 'unsafe-inline'",
-    "script-src 'self' 'unsafe-inline' https://www.gstatic.com https://www.google.com",
+    `script-src 'self' 'unsafe-inline'${isProduction ? "" : " 'unsafe-eval'"} https://www.gstatic.com https://www.google.com`,
     `connect-src ${connectSources.join(" ")}`,
     "frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com https://www.google.com https://www.recaptcha.net",
     "object-src 'none'",
