@@ -15,6 +15,7 @@ import { z } from "zod";
 import { SocialAuthButtons } from "./social-login/social-auth-buttons";
 import { useCheckEmailExists } from "@/lib/tanstack-react-query/apis/check-email";
 import { captchaHeaders, preloadRecaptcha } from "@/lib/recaptcha/client";
+import { savePendingVerificationEmail } from "./pending-verification";
 
 const signupSchema = z.object({
   venue: z.string().trim().min(1, "Venue name is required").max(150, "Venue name is too long"),
@@ -69,8 +70,8 @@ const SignUpPage = () => {
       if (res.error) {
         return toast.error(res.error.message);
       }
-      toast.success("Account created. Check your email inbox to verify your account.");
-      router.push("/sign-in");
+      savePendingVerificationEmail(data.email);
+      router.push("/verify");
     } catch {
       toast.error("Something went wrong. Please try again.");
     } finally {
