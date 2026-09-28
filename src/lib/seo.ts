@@ -5,7 +5,7 @@ export const SITE_NAME = "Dineri";
 export const SITE_TAGLINE = "The quiet infrastructure behind full tables";
 
 export const SITE_DESCRIPTION =
-  "Menu, reservations, reviews, social and analytics - one bio link for your venue. Zero commission.";
+  "Your guests don't care about a fancy website. They want your menu, your location and a way to book. Dineri gives them a simple but beautiful mobile-ready page that makes that effortless. No commission, no technical skills needed.";
 
 export const SOCIAL_PROFILES = [
   "https://www.instagram.com/dineri.app",
