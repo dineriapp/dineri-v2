@@ -1073,7 +1073,7 @@ export const PreviewSection = ({
             style={{ borderTop: `1px solid ${settings.sectionBorderColor}` }}
           >
             <a
-              href="https://www.dineri.app"
+              href="https://dineri.app"
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-1.5 text-xs font-semibold transition"
