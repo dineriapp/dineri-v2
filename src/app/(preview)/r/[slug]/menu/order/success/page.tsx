@@ -260,7 +260,7 @@ const Page = async ({ params, searchParams }: Props) => {
         <div className="mt-8 text-center text-xs text-zinc-400">
           Powered by{" "}
           <a
-            href="https://www.dineri.app"
+            href="https://dineri.app"
             target="_blank"
             rel="noreferrer"
             className="font-semibold text-zinc-500 hover:text-zinc-700"

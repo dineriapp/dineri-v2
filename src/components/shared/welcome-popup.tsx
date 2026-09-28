@@ -61,7 +61,7 @@ export const WelcomePopup = () => {
               tokens={[
                 { plain: "Your guests don't " },
                 { lime: "care" },
-                { plain: " about your fancy website.." },
+                { plain: " about a fancy website.." },
               ]}
             />
           </h2>
