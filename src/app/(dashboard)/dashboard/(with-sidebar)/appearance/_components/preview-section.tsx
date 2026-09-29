@@ -868,9 +868,7 @@ export const PreviewSection = ({
                 href={isSlugPage ? venueUrl(restaurant.slug, "/track-order") : ""}
                 className="text-xs font-medium transition hover:opacity-80"
                 style={{ color: settings.heading_color }}
-              >
-                Track your order
-              </Link>
+              ></Link>
 
               <button
                 type="button"
