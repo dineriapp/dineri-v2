@@ -127,37 +127,32 @@ const keyPoints = [
 
 const newFeatures = [
   {
-    title: "Menu editor",
-    desc: "Create and customize your menu with descriptions, pricing, allergens and add-ons. Show a Quick menu teaser on your profile, or open the full menu for ordering.",
+    title: "Design Studio",
+    desc: "Customize your Dineri page to match your restaurant's brand. Choose your colors, fonts and layout and see the changes live before you publish.",
   },
   {
-    title: "QR codes",
-    desc: "Generate QR codes that connect guests to your menu, events, or promotions. Every scan is tracked in real time.",
-  },
-  {
-    title: "Popups",
-    desc: "Customizable popups to announce news, promote events, or welcome guests on your ordering page.",
+    title: "Email customization",
+    desc: "Fully customize your automated emails. Confirmation emails, reminders and cancellation messages all in your own tone and style.",
   },
 ];
 
 const improvements = [
-  "More typography options - expanded font choices for greater customization.",
-  "Dashboard design tweaks - cleaner, more user-friendly layout.",
-  "Bug fixes - minor issues resolved for a smoother experience.",
+  "More typography options. More font choices to better match your restaurant's brand.",
+  "Bug fixes. Minor issues resolved for a smoother experience.",
 ];
 
 const comingSoon = [
   {
-    title: "Loyalty tools",
-    desc: "Reward repeat guests with discounts and digital punch cards.",
+    title: "Guest profiles & loyalty",
+    desc: "Reward your most loyal guests and build a database of returning visitors.",
   },
   {
-    title: "Reservation tool integration",
-    desc: "Connect Dineri with your existing booking system.",
+    title: "POS integration",
+    desc: "Connect Dineri with your existing POS system. Included in your current plan at no extra cost.",
   },
   {
-    title: "Advanced analytics",
-    desc: "Export reports and gain deeper insights into performance.",
+    title: "Campaign manager",
+    desc: "Create and manage your own Meta ad campaigns directly from your Dineri dashboard and target the right guests at the right time.",
   },
 ];
 
@@ -239,7 +234,7 @@ const HelpPage = () => {
               <SectionHeading
                 id="new-features"
                 number="02"
-                label="What's new · September 2025"
+                label="What's new"
                 title="New features"
               />
               <div className="grid gap-3 sm:grid-cols-3">
@@ -264,19 +259,14 @@ const HelpPage = () => {
               <SectionHeading
                 id="improvements"
                 number="02"
-                label="What's new · October 2025"
+                label="What's new · September '26"
                 title="Improvements"
               />
               <BulletList items={improvements} />
             </article>
 
             <article id="coming-soon" className="scroll-mt-24">
-              <SectionHeading
-                id="coming-soon"
-                number="02"
-                label="What's new · Roadmap"
-                title="Coming soon"
-              />
+              <SectionHeading id="coming-soon" number="02" label="What's new" title="Coming soon" />
               <ul className="grid gap-3 sm:grid-cols-3">
                 {comingSoon.map((c) => (
                   <li
