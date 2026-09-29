@@ -151,7 +151,7 @@ export const FeatureGrid = () => {
                 tokens={[
                   { plain: "Your guests " },
                   { white: "don't care about " },
-                  { plain: "your website" },
+                  { plain: "a fancy website" },
                 ]}
               />
             </h2>

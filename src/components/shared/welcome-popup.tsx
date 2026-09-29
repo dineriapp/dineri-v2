@@ -82,7 +82,7 @@ export const WelcomePopup = () => {
           </div>
 
           <div className="mt-4 text-center font-jetbrains-mono text-[10px] uppercase tracking-[0.12rem] text-muted-foreground">
-            No credit card required · Free forever plan
+            Set up your restaurant in 10 minutes
           </div>
         </div>
       </div>
