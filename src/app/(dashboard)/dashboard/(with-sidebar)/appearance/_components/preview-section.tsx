@@ -1080,7 +1080,7 @@ export const PreviewSection = ({
               style={{ color: settings.heading_color }}
             >
               <Sparkles className="h-3.5 w-3.5" style={{ color: settings.heading_color }} />
-              Powered by <span style={{ color: settings.heading_color }}>Dineri</span>
+              Powered by&nbsp;<span style={{ color: settings.heading_color }}>Dineri</span>
             </a>
             <div
               className="mt-2.5 flex items-center justify-center gap-3"
