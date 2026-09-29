@@ -25,7 +25,6 @@ export const Footer = () => {
       {
         title: "Resources",
         links: [
-          { label: "Docs", href: "/docs" },
           { label: "Help Center", href: "/help" },
           { label: "FAQ", href: "/faq" },
         ],
