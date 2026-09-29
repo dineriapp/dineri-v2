@@ -33,9 +33,9 @@ const sidebar = [
   {
     group: "Introduction",
     items: [
-      { id: "why", label: "Why use this platform?" },
-      { id: "who", label: "Who is it for?" },
-      { id: "key-points", label: "Key points to remember" },
+      { id: "why", label: "Why Dineri?" },
+      { id: "who", label: "Who is Dineri for?" },
+      { id: "key-points", label: "Key things to know" },
     ],
   },
   {
@@ -69,60 +69,60 @@ const sidebar = [
 
 const reasons = [
   {
-    title: "Centralized management",
-    desc: "Manage menus, orders, events, and promotions all in one place.",
+    title: "Built for your guests",
+    desc: "A fast, beautiful mobile page that answers every question your guest has. Menu, location, hours and a way to book.",
   },
   {
-    title: "Seamless guest experience",
-    desc: "Give your customers a modern and smooth way to interact with your business.",
+    title: "No technical skills needed",
+    desc: "If you can use Instagram, you can use Dineri. Set up your restaurant in 10 minutes, we handle everything else.",
   },
   {
-    title: "Actionable insights",
-    desc: "Analytics that show you what's working and where you can improve.",
+    title: "Know what's working",
+    desc: "See how many guests visit your page, what they click and where they come from. Make better decisions with real data.",
   },
   {
-    title: "Scalable & flexible",
-    desc: "Start small and grow with advanced features as your needs expand.",
+    title: "Zero commission",
+    desc: "Delivery platforms take up to 30%. Reservation systems charge per booking. Dineri takes zero. Every euro stays with you.",
   },
   {
-    title: "Easy to use",
-    desc: "No technical background required - designed for everyone.",
+    title: "One platform",
+    desc: "Everything your restaurant needs in one place. No switching between tools, no separate subscriptions, no chaos.",
   },
 ];
 
 const audiences = [
   {
-    name: "Restaurants & cafés",
-    desc: "Simplify reservations, orders, and menu management.",
+    name: "Independent restaurants",
+    desc: "From small bistros to busy beach clubs, Dineri gives you everything you need to fill tables and protect your revenue.",
   },
   {
-    name: "Bars & lounges",
-    desc: "Promote events and engage customers with QR codes and popups.",
+    name: "Tourist destination restaurants",
+    desc: "Operating in Ibiza, Tenerife, Sardinia or the Caribbean? Dineri is built for restaurants that serve international guests who book online.",
   },
   {
-    name: "Hospitality businesses",
-    desc: "Gain insights through analytics and streamline operations.",
+    name: "Restaurants with events",
+    desc: "Wine nights, chef's tables or special dinners, sell tickets directly through your Dineri page. Zero commission.",
   },
   {
-    name: "Private chefs & catering",
-    desc: "Showcase menus, manage bookings, and offer a personalized experience.",
+    name: "Restaurants tired of no-shows",
+    desc: "Every no-show costs you money. Dineri's built-in no-show protection means guests show up or you get paid.",
   },
   {
-    name: "Food trucks & pop-ups",
-    desc: "Share your location, menu, and updates instantly.",
+    name: "Restaurants accepting food orders",
+    desc: "Take takeaway and delivery orders directly through your Dineri page. No third-party platform, no commission. Every order goes straight to your bank account.",
   },
 ];
 
 const keyPoints = [
-  "One central dashboard - menus, orders, analytics and events in one place.",
-  "Quick setup - be up and running in just a few minutes.",
-  "No technical skills required - the editor is simple and intuitive.",
-  "Flexible features - turn modules (events, popups, QR) on or off.",
-  "Mobile-friendly - works seamlessly on any device.",
-  "Customizable design - match your brand identity.",
+  "One platform — reservations, orders, your public page and no-show protection. All connected.",
+  "Live in 10 minutes — set up your restaurant and start taking bookings today.",
+  "No technical skills needed — if you can use Instagram, you can use Dineri.",
+  "Zero commission — on reservations and orders. Every euro stays with you.",
+  "Mobile-first — your page works perfectly on any phone, anywhere in the world.",
+  "Real-time updates — change your menu, prices or photos and they go live instantly.",
   "Real-time updates - changes are reflected instantly.",
-  "Secure & reliable - your data and customers are protected.",
-  "Scalable - start small and expand as your business grows.",
+  "Your data is yours — fully GDPR compliant. We never sell or share your data.",
+  "Cancel anytime — no long-term contracts. No questions asked.",
 ];
 
 const newFeatures = [
@@ -166,9 +166,9 @@ const HelpPage = () => {
     <>
       <PageHeader
         number="08"
-        label="Support · Help Center"
-        headline={[{ plain: "Everything you need to " }, { lime: "run Dineri." }]}
-        description="Welcome. This guide gets you started fast and explains every module - menus, orders, links, events, FAQs, popups, QR codes and analytics."
+        label="Help Center"
+        headline={[{ plain: "Everything you need to " }, { lime: "run Dineri" }]}
+        description="This guide walks you through every feature from setting up your public page to managing reservations, orders and no-show protection."
         richClassName="max-w-4xl"
       />
       <section className="relative">
@@ -178,15 +178,11 @@ const HelpPage = () => {
           <div className="min-w-0 space-y-24">
             {/* INTRODUCTION ------------------------------------------- */}
             <article id="why" className="scroll-mt-24">
-              <SectionHeading
-                id="why"
-                number="01"
-                label="Introduction"
-                title="Why use this platform?"
-              />
+              <SectionHeading id="why" number="01" label="Introduction" title="Why Dineri?" />
               <p className="text-[15px] leading-relaxed text-muted-foreground sm:text-base">
-                We combine simplicity, flexibility and powerful features so you can focus on running
-                your business while we handle the technical side.
+                Building a restaurant website can be expensive, time-consuming and often
+                unnecessary. Your guests don't need a fancy website, they need your menu, your
+                location and a way to book.
               </p>
               <div className="mt-8 grid gap-3 sm:grid-cols-2">
                 {reasons.map((r) => (
@@ -207,7 +203,12 @@ const HelpPage = () => {
             </article>
 
             <article id="who" className="scroll-mt-24">
-              <SectionHeading id="who" number="01" label="Introduction" title="Who is it for?" />
+              <SectionHeading
+                id="who"
+                number="01"
+                label="Introduction"
+                title="Who is Dineri for?"
+              />
               <ul className="grid gap-3 sm:grid-cols-2">
                 {audiences.map((a) => (
                   <li
@@ -228,7 +229,7 @@ const HelpPage = () => {
                 id="key-points"
                 number="01"
                 label="Introduction"
-                title="Key points to remember"
+                title="Key things to know"
               />
               <BulletList items={keyPoints} />
             </article>

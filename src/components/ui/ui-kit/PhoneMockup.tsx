@@ -38,7 +38,7 @@ export const PhoneMockup = ({ className }: PhoneMockupProps) => {
           {/* Restaurant header */}
           <div className="mb-3 flex items-center gap-2.5">
             <div className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-200 text-xs font-bold">
-              TM
+              DC
             </div>
             <div className="min-w-0 flex-1">
               <div className="flex items-center gap-1 text-[13px] font-semibold">
