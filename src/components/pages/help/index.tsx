@@ -427,23 +427,23 @@ const features: {
     icon: Package,
     title: "Orders",
     intro:
-      "Run online ordering from one dashboard. Add menu items, manage order statuses, set delivery costs, and export your full order history.",
+      "Accept takeaway and delivery orders through your Dineri page. No third-party platform, no commission. Every order goes straight to your bank account.",
     blocks: [
       {
         heading: "How it works",
         type: "items",
         items: [
           {
-            t: "Open your menu page",
-            d: `Your menu lives at /menu (e.g. ${venueDisplayUrl("your-restaurant", "/menu")}). Customize the layout from the bottom-right.`,
+            t: "Set up your menu",
+            d: `Your menu lives at /menu (e.g. ${venueDisplayUrl("your-restaurant", "/menu")}). Add dishes, prices, photos and allergens from your dashboard. Changes go live instantly.`,
           },
           {
-            t: "Add menu items",
-            d: "Dashboard → Menu → Add menu item. Use Public visibility to choose whether it also appears in the Quick menu on your profile.",
+            t: "Connect your Stripe account",
+            d: "Go to Settings → Stripe settings and enter your Stripe public key and secret key. Once connected, every payment goes directly to your bank account.",
           },
           {
-            t: "Manage orders",
-            d: "Update statuses: Pending, In Progress, Completed or Cancelled. Each order shows items, quantity and time.",
+            t: "Manage incoming orders",
+            d: "Every order appears in your dashboard in real time. Move orders through the flow: New, Confirmed, Preparing, Ready, Delivered or Cancelled.",
           },
         ],
       },
@@ -451,24 +451,46 @@ const features: {
         heading: "Dashboard controls",
         type: "items",
         items: [
-          { t: "Restaurant status", d: "Set availability for delivery, pickup, or unavailable." },
-          { t: "Delivery costs", d: "Define your own delivery fees in the dashboard." },
-          { t: "Refresh timer", d: "Auto-refresh the orders screen every 2, 5, or 15 minutes." },
           {
-            t: "Opening hours",
-            d: "Set your restaurant's opening times (single schedule for delivery and pickup).",
+            t: "Restaurant status",
+            d: "Enable delivery, pickup or both. Set 'Disable Both' when you're not accepting orders.",
           },
-          { t: "Order export", d: "Download full order history as Excel for accounting." },
+          { t: "Delivery fee", d: "Configure the tax rate for your orders." },
+          {
+            t: "Tax percentage",
+            d: "Auto-refresh every 2, 5 or 15 minutes. Perfect for a kitchen tablet.",
+          },
+          {
+            t: "Refresh timer",
+            d: "Auto-refresh every 2, 5 or 15 minutes. Perfect for a kitchen tablet.",
+          },
+          {
+            t: "Order export",
+            d: "Download your full order history for accounting in just one click.",
+          },
+        ],
+      },
+      {
+        heading: "Imporant to know",
+        type: "list",
+        items: [
+          "Stripe is required. Connect your Stripe account before enabling orders. Without Stripe, guests cannot complete their payment.",
+          "Stripe transaction fees apply. Dineri charges zero commission but standard Stripe payment processing fees apply to every transaction.",
+          "Customize your order emails. Go to Settings → Email Integration to customize your automated order emails",
+          "When your restaurant status is set to Disable both, guests can still view your menu but prices are hidden and ordering is disabled.",
+          "Guests can only place orders during the opening hours you have set in Settings. Outside these hours, ordering is automatically disabled.",
+          "Every time you update an order status, your guest receives an automatic email notification. Keep your orders moving to keep your guests informed.",
         ],
       },
       {
         heading: "Tips",
         type: "list",
         items: [
-          "Add your menu items before customizing the layout for the best editing experience.",
-          "Check restaurant status during busy times to avoid missed orders.",
-          "Use the refresh timer on a kitchen tablet for hands-free updates.",
-          "Export your order history monthly to keep records organized.",
+          "Use high-quality photos for every dish. A great photo makes guests more likely to order.",
+          "Check your restaurant status before service starts to make sure you're accepting orders.",
+          "Use the refresh timer on a tablet in the kitchen for hands-free order updates.",
+          "Export your order history monthly to keep your records organized.",
+          "Guests can track their order status at dine.bio/your-restaurant/track-order. Add this link to your order confirmation email so guests can follow their order in real time.",
         ],
       },
     ],
