@@ -51,6 +51,7 @@ export function planHeadlineFeatures(plan: PlanName): string[] {
       "No-show protection with deposit",
       "Automatic email confirmations ",
       "Beautiful & Mobile-ready Dineri page",
+      "Samsung Galaxy Tab A11 as your dedicated Dineri management device*",
     ];
   }
 

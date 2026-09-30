@@ -193,7 +193,7 @@ const PricingPage = () => {
           </div>
 
           <p className="mt-8 text-center font-jetbrains-mono uppercase text-[11px] text-muted-foreground">
-            All plans · No credit card · GDPR · Cancel anytime
+            *Included with annual plan
           </p>
         </div>
       </section>
