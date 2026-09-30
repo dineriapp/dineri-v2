@@ -767,23 +767,35 @@ const features: {
     icon: QrCode,
     title: "QR codes",
     intro:
-      "Generate branded QR codes that link to your menu, events or any URL. Every scan is tracked in your analytics dashboard.",
+      "Create QR codes and link them to your menu, reservation page or any URL you want. Track every scan and see exactly what's working.",
     blocks: [
       {
         heading: "How it works",
         type: "items",
         items: [
           {
-            t: "1. Generate",
-            d: "Open the QR Generator, name the code, and pick a type: Restaurant page, Existing link, or Custom link.",
+            t: "Generate",
+            d: "Create a QR code by clicking New QR. Give it a label so you can recognize it in your overview.",
           },
           {
-            t: "2. Customize",
-            d: "Adjust colors, upload your logo, and add personalized text below the code.",
+            t: "Set the target URL",
+            d: "Link to your restaurant page, menu, reservation page or any custom URL.",
           },
           {
-            t: "3. Save & manage",
-            d: "Codes are stored in your overview list. Download to print or share digitally.",
+            t: "Customize the style",
+            d: "Choose between a square or dots style.",
+          },
+          {
+            t: "Adjust the colors",
+            d: "Set your own foreground and background color to match your brand.",
+          },
+          {
+            t: "Download",
+            d: "Your QR code as PNG or SVG to print or share digitally.",
+          },
+          {
+            t: "Track every scan",
+            d: "In your overview to see which placements perform best.",
           },
         ],
       },
@@ -791,20 +803,20 @@ const features: {
         heading: "Key benefits",
         type: "list",
         items: [
-          "Flexible linking - restaurant page, saved links, or custom URLs.",
-          "Brand customization - colors, logo, custom text.",
-          "Trackable - every scan is logged in analytics.",
-          "Reusable - codes don't change when you update content.",
+          "Link your QR code to anything like your restaurant page, menu, reservation page or any custom URL.",
+          "Fully branded with your own colors and style to match your restaurant identity.",
+          "Every scan is tracked so you can see which placements perform best.",
+          "The QR code stays the same even if you update the linked content, so no reprinting needed.",
+          "Download as PNG or SVG and use it anywhere, print or digital.",
         ],
       },
       {
         heading: "Use cases",
         type: "list",
         items: [
-          "Place QR codes on tables for instant menu access.",
-          "Add to flyers or posters to promote events.",
-          "Share on social media for promotions or videos.",
-          "Place branded codes at the entrance for a professional first impression.",
+          "Place QR codes on table tents so guests can instantly access your menu or place an order.",
+          "Add them to flyers or posters to promote upcoming events or special offers.",
+          "Print them on receipts so guests can easily leave a review or come back for more.",
         ],
       },
     ],
@@ -815,23 +827,31 @@ const features: {
     icon: Trophy,
     title: "Success story",
     intro:
-      "Showcase guest reviews, press features, and milestones to build trust with new visitors. Curate the stories that best represent your brand.",
+      "Showcase guest reviews, press features and memorable moments on your Dineri page. Real stories build trust and turn curious visitors into bookings.",
     blocks: [
       {
         heading: "How it works",
         type: "items",
         items: [
           {
-            t: "1. Add a story",
-            d: "Open Success Stories → Add Story. Enter a title, quote or summary, and the source (guest, press, partner).",
+            t: "Add a story",
+            d: "Upload a cover photo in 16:9 format for the best result.",
           },
           {
-            t: "2. Attach media",
-            d: "Upload a photo or logo to give the story visual weight on your profile.",
+            t: "Title",
+            d: "Write a title that summarizes the story or review in a few words.",
           },
           {
-            t: "3. Order & publish",
-            d: "Drag stories into your preferred sequence. Updates go live instantly.",
+            t: "Story",
+            d: "Write the story in short paragraphs. Keep it clear and easy to read on mobile.",
+          },
+          {
+            t: "Toggle",
+            d: "To show or hide the story from guests without deleting it.",
+          },
+          {
+            t: "Save",
+            d: "The story goes live instantly on your public Dineri page.",
           },
         ],
       },
@@ -840,19 +860,20 @@ const features: {
         type: "list",
         items: [
           "Build credibility with real guest voices and press mentions.",
-          "Highlight milestones - awards, anniversaries, sold-out events.",
-          "Convert undecided visitors into bookings and orders.",
-          "Refresh content easily as new wins come in.",
+          "Highlight milestones like awards, anniversaries or sold-out events.",
+          "Turn undecided visitors into bookings with authentic social proof.",
+          "Easy to update as new reviews and wins come in.",
         ],
       },
       {
         heading: "Tips",
         type: "list",
         items: [
-          "Keep quotes short and punchy - one or two sentences works best.",
+          "Keep stories short and punchy. Short paragraphs read best on mobile.",
           "Mix guest reviews with press features for variety.",
-          "Always credit the author with name, role, or publication.",
-          "Rotate stories seasonally so the section stays fresh.",
+          "Use your best story as the first one so it's the first thing guests see.",
+          "Update your success stories regularly to keep the section fresh and relevant.",
+          "Upload a high quality 16:9 cover photo for the best visual result.",
         ],
       },
     ],
@@ -863,23 +884,35 @@ const features: {
     icon: ImageIcon,
     title: "Gallery",
     intro:
-      "Show off your space, plates, and atmosphere with a curated photo gallery. A strong gallery turns visitors into guests before they even read the menu.",
+      "A strong gallery turns curious visitors into guests. Upload your best photos and videos and let the atmosphere, food and space speak for themselves.",
     blocks: [
       {
         heading: "How it works",
         type: "items",
         items: [
           {
-            t: "1. Upload photos",
-            d: "Open Gallery → Upload. Add multiple images at once - JPG, PNG, or WebP.",
+            t: "Add a tile",
+            d: "By clicking Add tile and choose between an image or video.",
           },
           {
-            t: "2. Organize",
-            d: "Group images into collections (Food, Interior, Events). Reorder by dragging.",
+            t: "Upload an image",
+            d: "In square format, 512x512 works best for a consistent grid.",
           },
           {
-            t: "3. Publish",
-            d: "Toggle visibility per image or collection. Changes appear instantly on your profile.",
+            t: "URL",
+            d: "Add an optional URL to link the tile to a specific page, for example an event or menu item.",
+          },
+          {
+            t: "Drag",
+            d: "To reorder tiles into your preferred layout. The top-left tile appears first on your public page.",
+          },
+          {
+            t: "Toggle",
+            d: "To show or hide individual tiles without deleting them.",
+          },
+          {
+            t: "Preview",
+            d: "How your gallery looks on your public Dineri page before publishing.",
           },
         ],
       },
@@ -887,20 +920,21 @@ const features: {
         heading: "Key benefits",
         type: "list",
         items: [
-          "Visual storytelling - show ambiance, plating, and personality.",
-          "Organized collections - guests find what interests them fast.",
-          "Lightweight delivery - images are optimized automatically.",
-          "Mobile-first display - looks great on every device.",
+          "Show your atmosphere, food and personality before guests even step through the door.",
+          "Mix photos and videos in the same gallery for a richer experience.",
+          "Looks great on mobile where most of your guests will see it.",
+          "Link individual tiles to specific pages like events or menu items.",
         ],
       },
       {
         heading: "Tips",
         type: "list",
         items: [
-          "Use high-quality, well-lit photos - natural light works best.",
-          "Lead with your hero image - first impressions matter.",
-          "Keep collections focused - quality over quantity.",
-          "Update seasonally to reflect new menu items or events.",
+          "Use high quality, well-lit photos. Natural light works best.",
+          "Square images work best. 512x512 for a consistent grid layout.",
+          "Keep the gallery focused. Quality over quantity always wins.",
+          "Update your gallery seasonally to reflect new dishes, events or interior changes.",
+          "Show the full experience like food, interior, terrace and atmosphere to give guests a real feel for your restaurant.",
         ],
       },
     ],
