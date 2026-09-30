@@ -45,20 +45,12 @@ const openings = [
     comp: "Freelance",
   },
   {
-    team: "Content",
+    team: "Marketing",
     role: "Content Creator",
     desc: "You tell our story. Short-form video, photography and copy that show restaurant what's possible with Dineri.",
     location: "Remote",
     type: "Flexible hours",
     comp: "Freelance",
-  },
-  {
-    team: "Account Manager",
-    role: "Sales",
-    desc: "You bring new restaurants on board. You listen, demo and turn interesed restaurants into long-term partners.",
-    location: "Remote",
-    type: "Flexible hours",
-    comp: "Native spanish speaker",
   },
 ];
 
@@ -115,7 +107,7 @@ const CareersPage = () => {
               </h2>
               <p className="mt-4 max-w-md text-sm text-muted-foreground">
                 We're a lean team building something we guinely believe in. Fast decisions, real
-                ownership and a. product that makes a difference for independent restaurants every
+                ownership and a product that makes a difference for independent restaurants every
                 single day.
               </p>
             </div>
@@ -179,7 +171,7 @@ const CareersPage = () => {
                       </span>
                     </div>
                     <div className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-foreground transition-colors group-hover:text-lime">
-                      View Job
+                      Apply
                       <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                     </div>
                   </button>
