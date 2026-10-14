@@ -2,6 +2,7 @@
 
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 import { AnalyticsDashboardData, AnalyticsEventType } from "@/lib/analytics/analytics";
+import { DBIP_ATTRIBUTION } from "@/lib/analytics/geoip-attribution";
 import { getCountryName } from "@/lib/utils";
 import { PlanName } from "@/lib/stripe/plans";
 import {
@@ -369,6 +370,16 @@ const AnalyticsDashboard = ({
                   No city data for this period yet.
                 </p>
               )}
+              <p className="mt-3 text-right text-[10px] text-muted-foreground">
+                <a
+                  href={DBIP_ATTRIBUTION.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hover:text-foreground hover:underline"
+                >
+                  {DBIP_ATTRIBUTION.text}
+                </a>
+              </p>
             </div>
           </div>
 

@@ -1,12 +1,22 @@
 import "server-only";
 
 import { analytics, type AnalyticsEventType } from "@/lib/analytics/analytics";
+import { lookupGeo } from "@/lib/analytics/geoip";
 import { CLIENT_IP_HEADER, REQUEST_METHOD_HEADER } from "@/lib/rate-limit/ip";
 import { resolveTrafficSource } from "@/utils/trafic-source";
 import { headers } from "next/headers";
 import { after, userAgent } from "next/server";
 
 type SearchParams = Record<string, string | string[] | undefined>;
+
+function decodeHeader(value: string | null): string | undefined {
+  if (!value) return undefined;
+  try {
+    return decodeURIComponent(value);
+  } catch {
+    return value;
+  }
+}
 
 export async function TrackVisit({
   slug,
@@ -38,14 +48,23 @@ export async function TrackVisit({
   });
   const device = userAgent({ headers: h }).device.type ?? "desktop";
   const ip = h.get(CLIENT_IP_HEADER) ?? undefined;
-  const country = h.get("x-vercel-ip-country") ?? h.get("cf-ipcountry") ?? undefined;
-  const city = h.get("x-vercel-ip-city") ?? undefined;
+  const headerCountry = h.get("x-vercel-ip-country") ?? h.get("cf-ipcountry") ?? undefined;
+  const headerCity = decodeHeader(h.get("x-vercel-ip-city") ?? h.get("cf-ipcity"));
 
-  after(() =>
-    analytics.track(slug, event, { ip, country, city, device, traffic }).catch((err) => {
+  after(async () => {
+    try {
+      const geo = headerCountry && headerCity ? {} : await lookupGeo(ip);
+      await analytics.track(slug, event, {
+        ip,
+        country: headerCountry ?? geo.country,
+        city: headerCity ?? geo.city,
+        device,
+        traffic,
+      });
+    } catch (err) {
       console.error("analytics.track failed", { slug, event, err });
-    }),
-  );
+    }
+  });
 
   return null;
 }

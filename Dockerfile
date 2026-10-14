@@ -56,6 +56,9 @@ ENV DATABASE_URL="postgresql://build:build@build.invalid:5432/build" \
     STRIPE_SECRET_KEY="sk_test_build_placeholder" \
     BETTER_AUTH_SECRET="build-placeholder-not-a-real-secret"
 
+ENV GEOIP_DB_PATH=/app/geoip/dbip-city-lite.mmdb
+RUN node scripts/fetch-geoip-db.mjs "$GEOIP_DB_PATH"
+
 RUN pnpm run build
 
 EXPOSE 3000
